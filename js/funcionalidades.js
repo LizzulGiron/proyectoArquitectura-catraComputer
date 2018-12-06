@@ -62,6 +62,7 @@ $(document).ready(function(){
      $('#txt-instruccion-19').val("");
      $('#txt-instruccion-20').val("");
 
+        
 
 
 
@@ -70,60 +71,40 @@ $(document).ready(function(){
 
 	$('#btn-compilar').click(function(){
 
-
-     var arrayInstrucciones = new array(12);
-     for(i=0; i<2; i++){
-      arrayInstrucciones[i]= new array(2);
-     }
-
-
-
-     arrayInstrucciones[0][0] = 10;
-     arrayInstrucciones[0][1] = 'Leer';
-
-     arrayInstrucciones[1][0] = 11;
-     arrayInstrucciones[1][1] = 'Escribir';
-
-     arrayInstrucciones[2][0] = 20;
-     arrayInstrucciones[2][1] = 'Cargar';
-
-     arrayInstrucciones[3][0] = 21;
-     arrayInstrucciones[3][1] = 'Almacenar';
-
-     arrayInstrucciones[4][0] = 30;
-     arrayInstrucciones[4][1] = 'Sumar';
-
-     arrayInstrucciones[5][0] = 31;
-     arrayInstrucciones[5][1] = 'Restar';
-
-     arrayInstrucciones[6][0] = 32;
-     arrayInstrucciones[6][1] = 'Dividir';
-
-     arrayInstrucciones[7][0] = 33;
-     arrayInstrucciones[7][1] = 'Multiplicar';
-
-     arrayInstrucciones[8][0] = 40;
-     arrayInstrucciones[8][1] = 'Bifurca';
-
-     arrayInstrucciones[9][0] = 41;
-     arrayInstrucciones[9][1] = 'Bifurca negativo';
-
-     arrayInstrucciones[10][0] = 42
-     arrayInstrucciones[10][1] = 'Bifurca cero';
-
-     arrayInstrucciones[11][0] = 43;
-     arrayInstrucciones[11][1] = 'Alto';
-
+        var arrayInstrucciones = ["10:Leer","11:Escribir","20:Cargar","21:Almacenar","30:Sumar","31:Restar","32:Dividir","33:Multiplicar","40:Bifurca","41:Bifurca negativo","42:Bifurca cero","43:Alto"];
+     
 		var regex = /^(10|11|20|21|30|31|32|33|40|41|42|43)[0-9]{3}$/;
        	for (var i = 1; i  < 2; i++) {
-
        		var input = "#txt-contenido-"+i+"";
+            var input1 = "#txt-instruccion-"+i;
        		var cadena = $(input).val();
+            alert(cadena);
        		var contenido = regex.test(cadena.trim());
+            alert(contenido);
        		var subcadena = cadena.substring(2,5);
-       		if ((contenido) && (subcadena == '001')) {
+            alert(subcadena);
+            var subcadena1 = cadena.substring(0,2);
+            alert(subcadena1);
+            var prueba = subcadena == (001||002);
+            alert(prueba);
+       		if ((contenido) && (subcadena == ('001'||'002'))) {
        			$(input).css("background-color", "white");
- 				alert('correcto');
+
+
+
+
+
+                for (var i = 0; i < 13; i++) {
+                    var instruccion = '"'+arrayInstrucciones[i]+'"';
+                    var contenidoInstruccion = instruccion.substring(1,3);
+                    var contenidoInstruccion1 = instruccion.substring(4,15);
+                    if (contenidoInstruccion == subcadena1 ) {
+                        //alert(contenidoInstruccion1);
+                        $(input1).val(contenidoInstruccion1);
+                    }
+
+                }
+                
     		}
     		else
     			$(input).focus();
@@ -137,7 +118,7 @@ $(document).ready(function(){
         var input2 = "#txt-instruccion-"+i+"";
         var subcadena2 = cadena.substring(0,2);
         for (var i = 0; i < 12; i++) {
-          if (arrayInstrucciones[i] == subcadena2) {
+          if (arrayInstrucciones[i][0] == subcadena2) {
               var instruccion = arrayInstrucciones[i][1];
               $(input2).val(instruccion);
           }
