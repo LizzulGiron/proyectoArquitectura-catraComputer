@@ -1,48 +1,53 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<title>catraComputer</title>
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="css/main.css">
+  <meta charset="utf-8">
+  <title>catraComputer</title>
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 <body class="view">
 
-	<div class="container cuadro">
-  		<h1>catraComputer</h1>
-  		<!--<p>Practica #1 Programacion Orientada a objetos</p><hr>-->
-      <hr>
-  		<div class="row bs-wizard" style="border-bottom:0;">
-    			<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+
+<!-- Informacion de las instrucciones-->
+  <div class="container cuadro">
+    <hr>
+      <h1>catraComputer</h1>
+    <hr>
+      <div class="row bs-wizard" style="border-bottom:0;">
+          <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
              Comenzar
           </button>
-  	 </div>
-     <hr>
-	</div>
+     </div>
+  </div>
 
-	
+<!--###########################################################################################################-->
 
-	<!-- Modal -->
+  <!-- Modal -->
 <div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
 
-    <div class="modal-content well" style="background-color: rgba(0,0,0,0.5) ;border-radius: 25px ">
-      <div class="modal-header well" style="background-color: rgba(0,0,0,5) ;border-radius: 25px ">
+    <div class="modal-content" style="background-color: rgba(0,0,0,0.5) ;border-radius: 25px ">
+      <div class="modal-header" style="background-color: rgba(0,0,0,5) ;border-radius: 25px ">
         <button type="button" class="close" data-dismiss="modal" style="color: white">&times;</button>
         <h4 class="modal-title" style="color: white">LMCC</h4>
       </div>
       <div class="modal-body" id="miAsistente">
-          <!-- Progress barra, color verde 
-          <div class="progress" style="height: 20px">
+        
+          <!-- Progress barra, color verde -->
+          <!--<div class="progress" style="height: 20px">
               <div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" aria-valuenow="1" aria-valuemin="1" aria-valuemax="4" style="width: 20%; height: 20px">
                    Paso 1 de 4
               </div>
-          </div> -->
-         
+          </div>-->
+
+
+
+
          <!-- Enlaces de navegación  -->
         <div class="navbar">
         
-            <div class="navbar-inner col-md-offset-2" style="margin-top: -20px">
+            <div class="navbar-inner col-md-offset-2">
                 <ul class="nav nav-pills">
                     <li class="active" id="btn-compilar"><a href="#paso1" data-toggle="tab" data-paso="1"><span class="glyphicon glyphicon-user"></span> Compilar</a></li>
                     <li class=""><a href="#paso2" data-toggle="tab" data-paso="2"><span class="glyphicon glyphicon-thumbs-up"></span>Ejecutar</a></li>
@@ -51,28 +56,17 @@
                 </ul>
             </div>
         </div>
+
+
           <!-- Contenido de todos los tabs -->
-          <div class="tab-content container-fluid">
+          <div class="tab-content">
 
               <div class="tab-pane fade in active" id="paso1">
-                  <!-- Recuadro que engloba los controles de entrada 
-                  <div class="well">
-                      <label>Nombres</label>
-                      <input class="form-control input-lg" id="txt-nombre">
-                      <div id="mensaje1" class="errores" style="display: none;text-align: right;"><b>Campo obligatorio</b></div>
-                      <br>
-                      <label>Apellidos</label>
-                      <input class="form-control input-lg" id="txt-apellido">
-                      <div id="mensaje2" class="errores" style="display: none;text-align: right;"><b>Campo obligatorio</b></div>
-                      <br>
-                      <label>Fecha de Nacimiento</label>
-                      <input class="form-control input-lg" id="txt-fecha">
-                      <div id="mensaje3" class="errores" style="display: none;text-align: right;"><b>Campo obligatorio</b></div>-->
 
+                  <!-- Definicion de la interfaz grafica -->
 
-
-                 <div class="well" style="background-color: rgba(0,0,0,5) ;border-radius: 25px;text-align: center;color: white;margin-top: -30px">
-                    <div class="row">
+                  <div class="well" style="background-color: rgba(0,0,0,5) ;border-radius: 25px;text-align: center;color: white;margin-top: -15px">
+                      <div class="row">
                       <div class="col-md-4">
                          Ubicacion
                       </div>
@@ -84,13 +78,11 @@
                       </div>
                       
                     </div>
-                    
-                 </div>
 
+                  </div>
 
-                 <!--Div que contendra los parametros de ejecucion del programa netamente-->
-                 <div class="" style="">
-                  <div class="row">
+                  <div>
+                    <div class="row">
                     <!--Div que contiene cada una de las etiquetas en las que se guardara la informacion-->
                     <div class="col-md-4">
                       <input type="text" name="txt-ubicacion-1" id="txt-ubicacion-1">
@@ -115,6 +107,7 @@
                       <input type="text" name="txt-ubicacion-20" id="txt-ubicacion-20">
                       
                     </div>
+
                     <div class="col-md-4">
                       <input type="text" name="txt-contenido-1" id="txt-contenido-1">
                       <input type="text" name="txt-contenido-2" id="txt-contenido-2">
@@ -162,26 +155,71 @@
                       <input type="text" name="txt-instruccion-20" id="txt-instruccion-20">
                       
                     </div>
-
+                      
+                    </div>
                   </div>
                   <a class="btn btn-default next" href="#" id="personal">Continuar</a>
               </div>
+      <!-- ######################################################################################### -->
+
+
 
               <!-- Tab "paso2" -->
               <div class="tab-pane fade" id="paso2">
 
-                  <div class="well">
-                      <label><span class="glyphicon glyphicon-thumbs-up"></span> Facebook</label>
-                      <input class="form-control input-lg">
-                      <br>
-                      <label><span class="glyphicon glyphicon-retweet"></span> Twitter</label>
-                      <input class="form-control input-lg">
-                      <br>
-                      <label><span class="glyphicon glyphicon-expand"></span> Youtube</label>
-                      <input class="form-control input-lg">
-                      <br>
-                      <label><span class="glyphicon glyphicon-globe"></span> Página Web</label>
-                      <input class="form-control input-lg">
+                  <div class="well" style="background-color: rgba(0,0,0,5) ;border-radius: 25px;text-align: center;color: white;margin-top: -15px" id="div-Resultado">
+
+
+                    <div style="text-align: left;">
+                      <table>
+                        <tr>
+                          <td>
+                            Instruccion:
+                            <input type="text" name="txt-decodificacion-1" id="txt-decodificacion-1" style="width: 50px;border-radius: 8px">
+                          </td>
+                          <td>
+                            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                          </td>
+                          <td>
+                            Direccion:
+                            <input type="text" name="txt-direccion-1" id="txt-direccion-1" style="width: 50px;border-radius: 8px">
+                          </td>
+                        </tr>
+                      </table>
+                      <hr>
+                      <table>
+                        <tr>
+                          <td>
+                            <label >PC:</label>
+                          </td>
+                          <td>
+                            &nbsp&nbsp&nbsp<input type="text" name="txt-pc-1" id="txt-pc-1">
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <label>Acumudador:</label>
+                          </td>
+                          <td>
+                            &nbsp&nbsp&nbsp<input type="text" name="txt-acumulador-1"><br>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <label>IR:</label>
+                          </td>
+                          <td>
+                            &nbsp&nbsp&nbsp<input type="text" name="txt-ir-1" id="txt-ir-1">
+                          </td>
+                        </tr>
+                      </table>
+                        
+                       
+                        
+                        
+
+                    </div>
+                      
                   </div>
                   <a class="btn btn-default next" href="#" id="social">Continuar</a>
               </div>
@@ -223,7 +261,7 @@
     </div>
   </div>
 
-	
+  
   <script type="text/javascript" src="js/jquery-3.2.1.js"></script>
   <script src="js/jquery-ui.js"></script>
   <script type="text/javascript" src="js/bootstrap.js"></script>
