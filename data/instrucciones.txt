@@ -1,0 +1,12 @@
+10,Leer
+11,Escribir
+20,Cargar
+21,Almacenar
+30,Sumar
+31,Restar
+32,Dividir
+33,Multiplicar
+40,Bifurca
+41,Bifurca Negativo
+42,Bifurca Cero
+43,Alto
