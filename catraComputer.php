@@ -34,6 +34,20 @@
       </div>
       <div class="modal-body" id="miAsistente">
         
+
+
+
+        <!--<script type="">
+          var nombre = prompt('Ingrese su nombre: ','');
+          alert(nombre);
+        </script>-->
+
+
+
+
+
+
+
           <!-- Progress barra, color verde -->
           <!--<div class="progress" style="height: 20px">
               <div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" aria-valuenow="1" aria-valuemin="1" aria-valuemax="4" style="width: 20%; height: 20px">
@@ -50,8 +64,8 @@
             <div class="navbar-inner col-md-offset-2">
                 <ul class="nav nav-pills">
                     <li class="active" id="btn-compilar"><a href="#paso1" data-toggle="tab" data-paso="1"><span class="glyphicon glyphicon-user"></span> Compilar</a></li>
-                    <li class=""><a href="#paso2" data-toggle="tab" data-paso="2"><span class="glyphicon glyphicon-thumbs-up"></span>Ejecutar</a></li>
-                    <li class=""><a href="#paso3" data-toggle="tab" data-paso="3"><span class="glyphicon glyphicon-tasks"></span> Depurar </a></li>
+                    <li class="" id="btn-depurar"><a href="#paso2" data-toggle="tab" data-paso="2"><span class="glyphicon glyphicon-thumbs-up"></span>Depurar</a></li>
+                    <li class="" id="btn-ejecutar"><a href="#paso3" data-toggle="tab" data-paso="3"><span class="glyphicon glyphicon-tasks"></span> Ejecutar </a></li>
                    <li class="" id="btn-limpiar"><a href="#paso4" data-toggle="tab" data-paso="4"><span class="glyphicon glyphicon glyphicon-floppy-saved"></span>Limpiar</a></li>
                 </ul>
             </div>
@@ -85,74 +99,74 @@
                     <div class="row">
                     <!--Div que contiene cada una de las etiquetas en las que se guardara la informacion-->
                     <div class="col-md-4">
-                      <input type="text" name="txt-ubicacion-1" id="txt-ubicacion-1">
-                      <input type="text" name="txt-ubicacion-2" id="txt-ubicacion-2">
-                      <input type="text" name="txt-ubicacion-3" id="txt-ubicacion-3">
-                      <input type="text" name="txt-ubicacion-4" id="txt-ubicacion-4">
-                      <input type="text" name="txt-ubicacion-5" id="txt-ubicacion-5">
-                      <input type="text" name="txt-ubicacion-6" id="txt-ubicacion-6">
-                      <input type="text" name="txt-ubicacion-7" id="txt-ubicacion-7">
-                      <input type="text" name="txt-ubicacion-8" id="txt-ubicacion-8">
-                      <input type="text" name="txt-ubicacion-9" id="txt-ubicacion-9">
-                      <input type="text" name="txt-ubicacion-10" id="txt-ubicacion-10">
-                      <input type="text" name="txt-ubicacion-11" id="txt-ubicacion-11">
-                      <input type="text" name="txt-ubicacion-12" id="txt-ubicacion-12">
-                      <input type="text" name="txt-ubicacion-13" id="txt-ubicacion-13">
-                      <input type="text" name="txt-ubicacion-14" id="txt-ubicacion-14">
-                      <input type="text" name="txt-ubicacion-15" id="txt-ubicacion-15">
-                      <input type="text" name="txt-ubicacion-16" id="txt-ubicacion-16">
-                      <input type="text" name="txt-ubicacion-17" id="txt-ubicacion-17">
-                      <input type="text" name="txt-ubicacion-18" id="txt-ubicacion-18">
-                      <input type="text" name="txt-ubicacion-19" id="txt-ubicacion-19">
-                      <input type="text" name="txt-ubicacion-20" id="txt-ubicacion-20">
+                      <input type="text" name="txt-contenedor-1" id="txt-contenedor-0">
+                      <input type="text" name="txt-contenedor-2" id="txt-contenedor-1">
+                      <input type="text" name="txt-contenedor-3" id="txt-contenedor-2">
+                      <input type="text" name="txt-contenedor-4" id="txt-contenedor-3">
+                      <input type="text" name="txt-contenedor-5" id="txt-contenedor-4">
+                      <input type="text" name="txt-contenedor-6" id="txt-contenedor-5">
+                      <input type="text" name="txt-contenedor-7" id="txt-contenedor-6">
+                      <input type="text" name="txt-contenedor-8" id="txt-contenedor-7">
+                      <input type="text" name="txt-contenedor-9" id="txt-contenedor-8">
+                      <input type="text" name="txt-contenedor-10" id="txt-contenedor-9">
+                      <input type="text" name="txt-contenedor-11" id="txt-contenedor-10">
+                      <input type="text" name="txt-contenedor-12" id="txt-contenedor-11">
+                      <input type="text" name="txt-contenedor-13" id="txt-contenedor-12">
+                      <input type="text" name="txt-contenedor-14" id="txt-contenedor-13">
+                      <input type="text" name="txt-contenedor-15" id="txt-contenedor-14">
+                      <input type="text" name="txt-contenedor-16" id="txt-contenedor-15">
+                      <input type="text" name="txt-contenedor-17" id="txt-contenedor-16">
+                      <input type="text" name="txt-contenedor-18" id="txt-contenedor-17">
+                      <input type="text" name="txt-contenedor-19" id="txt-contenedor-18">
+                      <input type="text" name="txt-contenedor-20" id="txt-contenedor-19">
                       
                     </div>
 
                     <div class="col-md-4">
-                      <input type="text" name="txt-contenido-1" id="txt-contenido-1">
-                      <input type="text" name="txt-contenido-2" id="txt-contenido-2">
-                      <input type="text" name="txt-contenido-3" id="txt-contenido-3">
-                      <input type="text" name="txt-contenido-4" id="txt-contenido-4">
-                      <input type="text" name="txt-contenido-5" id="txt-contenido-5">
-                      <input type="text" name="txt-contenido-6" id="txt-contenido-6">
-                      <input type="text" name="txt-contenido-7" id="txt-contenido-7">
-                      <input type="text" name="txt-contenido-8" id="txt-contenido-8">
-                      <input type="text" name="txt-contenido-9" id="txt-contenido-9">
-                      <input type="text" name="txt-contenido-10" id="txt-contenido-10">
-                      <input type="text" name="txt-contenido-11" id="txt-contenido-11">
-                      <input type="text" name="txt-contenido-12" id="txt-contenido-12">
-                      <input type="text" name="txt-contenido-13" id="txt-contenido-13">
-                      <input type="text" name="txt-contenido-14" id="txt-contenido-14">
-                      <input type="text" name="txt-contenido-15" id="txt-contenido-15">
-                      <input type="text" name="txt-contenido-16" id="txt-contenido-16">
-                      <input type="text" name="txt-contenido-17" id="txt-contenido-17">
-                      <input type="text" name="txt-contenido-18" id="txt-contenido-18">
-                      <input type="text" name="txt-contenido-19" id="txt-contenido-19">
-                      <input type="text" name="txt-contenido-20" id="txt-contenido-20">
+                      <input type="text" name="txt-contenido-1" id="txt-contenido-0">
+                      <input type="text" name="txt-contenido-2" id="txt-contenido-1">
+                      <input type="text" name="txt-contenido-3" id="txt-contenido-2">
+                      <input type="text" name="txt-contenido-4" id="txt-contenido-3">
+                      <input type="text" name="txt-contenido-5" id="txt-contenido-4">
+                      <input type="text" name="txt-contenido-6" id="txt-contenido-5">
+                      <input type="text" name="txt-contenido-7" id="txt-contenido-6">
+                      <input type="text" name="txt-contenido-8" id="txt-contenido-7">
+                      <input type="text" name="txt-contenido-9" id="txt-contenido-8">
+                      <input type="text" name="txt-contenido-10" id="txt-contenido-9">
+                      <input type="text" name="txt-contenido-11" id="txt-contenido-10">
+                      <input type="text" name="txt-contenido-12" id="txt-contenido-11">
+                      <input type="text" name="txt-contenido-13" id="txt-contenido-12">
+                      <input type="text" name="txt-contenido-14" id="txt-contenido-13">
+                      <input type="text" name="txt-contenido-15" id="txt-contenido-14">
+                      <input type="text" name="txt-contenido-16" id="txt-contenido-15">
+                      <input type="text" name="txt-contenido-17" id="txt-contenido-16">
+                      <input type="text" name="txt-contenido-18" id="txt-contenido-17">
+                      <input type="text" name="txt-contenido-19" id="txt-contenido-18">
+                      <input type="text" name="txt-contenido-20" id="txt-contenido-19">
                       
                     </div>
 
                     <div class="col-md-4">
-                      <input type="text" name="txt-instruccion-1" id="txt-instruccion-1">
-                      <input type="text" name="txt-instruccion-2" id="txt-instruccion-2">
-                      <input type="text" name="txt-instruccion-3" id="txt-instruccion-3">
-                      <input type="text" name="txt-instruccion-4" id="txt-instruccion-4">
-                      <input type="text" name="txt-instruccion-5" id="txt-instruccion-5">
-                      <input type="text" name="txt-instruccion-6" id="txt-instruccion-6">
-                      <input type="text" name="txt-instruccion-7" id="txt-instruccion-7">
-                      <input type="text" name="txt-instruccion-8" id="txt-instruccion-8">
-                      <input type="text" name="txt-instruccion-9" id="txt-instruccion-9">
-                      <input type="text" name="txt-instruccion-10" id="txt-instruccion-10">
-                      <input type="text" name="txt-instruccion-11" id="txt-instruccion-11">
-                      <input type="text" name="txt-instruccion-12" id="txt-instruccion-12">
-                      <input type="text" name="txt-instruccion-13" id="txt-instruccion-13">
-                      <input type="text" name="txt-instruccion-14" id="txt-instruccion-14">
-                      <input type="text" name="txt-instruccion-15" id="txt-instruccion-15">
-                      <input type="text" name="txt-instruccion-16" id="txt-instruccion-16">
-                      <input type="text" name="txt-instruccion-17" id="txt-instruccion-17">
-                      <input type="text" name="txt-instruccion-18" id="txt-instruccion-18">
-                      <input type="text" name="txt-instruccion-19" id="txt-instruccion-19">
-                      <input type="text" name="txt-instruccion-20" id="txt-instruccion-20">
+                      <input type="text" name="txt-instruccion-1" id="txt-instruccion-0">
+                      <input type="text" name="txt-instruccion-2" id="txt-instruccion-1">
+                      <input type="text" name="txt-instruccion-3" id="txt-instruccion-2">
+                      <input type="text" name="txt-instruccion-4" id="txt-instruccion-3">
+                      <input type="text" name="txt-instruccion-5" id="txt-instruccion-4">
+                      <input type="text" name="txt-instruccion-6" id="txt-instruccion-5">
+                      <input type="text" name="txt-instruccion-7" id="txt-instruccion-6">
+                      <input type="text" name="txt-instruccion-8" id="txt-instruccion-7">
+                      <input type="text" name="txt-instruccion-9" id="txt-instruccion-8">
+                      <input type="text" name="txt-instruccion-10" id="txt-instruccion-9">
+                      <input type="text" name="txt-instruccion-11" id="txt-instruccion-10">
+                      <input type="text" name="txt-instruccion-12" id="txt-instruccion-11">
+                      <input type="text" name="txt-instruccion-13" id="txt-instruccion-12">
+                      <input type="text" name="txt-instruccion-14" id="txt-instruccion-13">
+                      <input type="text" name="txt-instruccion-15" id="txt-instruccion-14">
+                      <input type="text" name="txt-instruccion-16" id="txt-instruccion-15">
+                      <input type="text" name="txt-instruccion-17" id="txt-instruccion-16">
+                      <input type="text" name="txt-instruccion-18" id="txt-instruccion-17">
+                      <input type="text" name="txt-instruccion-19" id="txt-instruccion-18">
+                      <input type="text" name="txt-instruccion-20" id="txt-instruccion-19">
                       
                     </div>
                       
@@ -170,49 +184,9 @@
                   <div class="well" style="background-color: rgba(0,0,0,5) ;border-radius: 25px;text-align: center;color: white;margin-top: -15px" id="div-Resultado">
 
 
-                    <div style="text-align: left;">
-                      <table>
-                        <tr>
-                          <td>
-                            Instruccion:
-                            <input type="text" name="txt-decodificacion-1" id="txt-decodificacion-1" style="width: 50px;border-radius: 8px">
-                          </td>
-                          <td>
-                            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                          </td>
-                          <td>
-                            Direccion:
-                            <input type="text" name="txt-direccion-1" id="txt-direccion-1" style="width: 50px;border-radius: 8px">
-                          </td>
-                        </tr>
-                      </table>
+                    <div style="text-align: left;" id="div-depuracion">
                       <hr>
-                      <table>
-                        <tr>
-                          <td>
-                            <label >PC:</label>
-                          </td>
-                          <td>
-                            &nbsp&nbsp&nbsp<input type="text" name="txt-pc-1" id="txt-pc-1">
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <label>Acumudador:</label>
-                          </td>
-                          <td>
-                            &nbsp&nbsp&nbsp<input type="text" name="txt-acumulador-1"><br>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <label>IR:</label>
-                          </td>
-                          <td>
-                            &nbsp&nbsp&nbsp<input type="text" name="txt-ir-1" id="txt-ir-1">
-                          </td>
-                        </tr>
-                      </table>
+
                         
                        
                         
@@ -226,28 +200,101 @@
               <!-- Tab "paso3" -->
               <div class="tab-pane fade" id="paso3">
                   <!-- Recuadro que engloba los controles de entrada -->
-                  <div class="well"> <h2>Ya Casi!</h2>Ingresa tu información de seguridad para finalizar.</div>
-                  <label>Correo electrónico</label>
-                  <input class="form-control input-lg" id="txt-correo">
-                  <div id="mensaje4" class="errores" style="display: none;text-align: right;"><b>Campo obligatorio</b></div>
-                  <div id="mensaje8" class="errores" style="display: none;text-align: right;"><b>Correo no valido</b></div>
-                  <br>
-                  <label>Contraseña</label>
-                  <input class="form-control input-lg" placeholder="Minimo 6 caracteres" id="txt-contraseña">
-                  <div id="mensaje5" class="errores" style="display: none;text-align: right;"><b>Campo obligatorio</b></div>
-                  <div id="mensaje7" class="errores" style="display: none;text-align: right;"><b>Contraseñas distintas</b></div>
-                  <br>
-                  <label>Repetir contraseña</label>
-                  <input class="form-control input-lg" placeholder="Minimo 6 caracteres" id="txt-contraseña2">
-                  <div id="mensaje6" class="errores" style="display: none;text-align: right;"><b>Campo obligatorio</b></div>
-                  <br>
+                  <div class="well" style="background-color: rgba(0,0,0,5) ;border-radius: 25px;color: white;height: 20px"> <h4 style="margin-top: -10px">Ejecutando...</h4></div>
+                  <div class="well" style="background-color: rgba(0,0,0,0.2) ;border-radius: 25px;color: white">
+                  <div >
+                    <table>
+                    <tr>
+                      <td>
+                        <label>
+                          PC:
+                        </label>
+                      </td>
+                      <td>
+                        &nbsp&nbsp&nbsp<input type="text" name="txt-pc-ejecion" id="txt-pc-ejecucion" style="color: black">
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <label>
+                          Acumulador:
+                        </label>
+                      </td>
+                      <td>
+                        &nbsp&nbsp&nbsp<input type="text" name="txt-acumulador-ejecucion" id="txt-acumulador-ejecucion" style="color: black">
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <label>
+                          IR:
+                        </label>
+                      </td>
+                      <td>
+                        &nbsp&nbsp&nbsp<input type="text" name="txt-ir" id="txt-ir" style="color: black">
+                      </td>
+                    </tr>
+                  </table>
+                  <hr>
+                  <div class="well" style="background-color: rgba(0,0,0,8) ;border-radius: 25px;color: white">
+                    <label>Pantalla</label>
+                    <hr style="margin-top: -7px">
+                    <textarea id="txt-pantalla" class="form-control" rows="5"></textarea>
+                  </div>
+
+                  <div class="well" style="background-color: rgba(0,0,0,8) ;border-radius: 25px;color: white;text-align: right;">
+                    <label>Resultado:</label>
+                    &nbsp&nbsp&nbsp<input type="text" name="txt-resultado" id="txt-resultado" style="color: black">
+                  </div>
+                  </div>
                   <a class="btn btn-default next" href="#" id="seguridad">Continuar</a>
+
               </div>
               <!-- Tab "paso4" -->
               <div class="tab-pane fade" id="paso4">
-                  <!-- Recuadro que engloba los controles de entrada -->
-                  <div class="well"> <h2>Has finalizado!</h2> Felicidades!, Para continuar con el registro haz clic en enviar.</div>
-                  <a class="btn btn-success first" href="#">Volver a Empezar.</a>
+                      <input type="text" name="txt-ubicacion-001" id="txt-ubicacion-000">
+                      <input type="text" name="txt-ubicacion-002" id="txt-ubicacion-001">
+                      <input type="text" name="txt-ubicacion-003" id="txt-ubicacion-002">
+                      <input type="text" name="txt-ubicacion-004" id="txt-ubicacion-003">
+                      <input type="text" name="txt-ubicacion-005" id="txt-ubicacion-004">
+                      <input type="text" name="txt-ubicacion-006" id="txt-ubicacion-005">
+                      <input type="text" name="txt-ubicacion-007" id="txt-ubicacion-006">
+                      <input type="text" name="txt-ubicacion-008" id="txt-ubicacion-007">
+                      <input type="text" name="txt-ubicacion-009" id="txt-ubicacion-008">
+                      <input type="text" name="txt-ubicacion-010" id="txt-ubicacion-009">
+                      <input type="text" name="txt-ubicacion-011" id="txt-ubicacion-010">
+                      <input type="text" name="txt-ubicacion-012" id="txt-ubicacion-011">
+                      <input type="text" name="txt-ubicacion-013" id="txt-ubicacion-012">
+                      <input type="text" name="txt-ubicacion-014" id="txt-ubicacion-013">
+                      <input type="text" name="txt-ubicacion-015" id="txt-ubicacion-014">
+                      <input type="text" name="txt-ubicacion-016" id="txt-ubicacion-015">
+                      <input type="text" name="txt-ubicacion-017" id="txt-ubicacion-016">
+                      <input type="text" name="txt-ubicacion-018" id="txt-ubicacion-017">
+                      <input type="text" name="txt-ubicacion-019" id="txt-ubicacion-018">
+                      <input type="text" name="txt-ubicacion-020" id="txt-ubicacion-019">
+
+                      <input type="number" name="txt-variable-001" id="txt-variable-001">
+                      <input type="number" name="txt-variable-002" id="txt-variable-002">
+                      <input type="number" name="txt-variable-003" id="txt-variable-003">
+                      <input type="number" name="txt-variable-004" id="txt-variable-004">
+                      <input type="number" name="txt-variable-005" id="txt-variable-005">
+                      <input type="number" name="txt-variable-006" id="txt-variable-006">
+                      <input type="number" name="txt-variable-007" id="txt-variable-007">
+                      <input type="number" name="txt-variable-008" id="txt-variable-008">
+                      <input type="number" name="txt-variable-009" id="txt-variable-009">
+                      <input type="number" name="txt-variable-010" id="txt-variable-010">
+                      <input type="number" name="txt-variable-011" id="txt-variable-011">
+                      <input type="number" name="txt-variable-012" id="txt-variable-012">
+                      <input type="number" name="txt-variable-013" id="txt-variable-013">
+                      <input type="number" name="txt-variable-014" id="txt-variable-014">
+                      <input type="number" name="txt-variable-015" id="txt-variable-015">
+                      <input type="number" name="txt-variable-016" id="txt-variable-016">
+                      <input type="number" name="txt-variable-017" id="txt-variable-017">
+                      <input type="number" name="txt-variable-018" id="txt-variable-018">
+                      <input type="number" name="txt-variable-019" id="txt-variable-019">
+                      <input type="number" name="txt-variable-020" id="txt-variable-020">
+
+                  
               </div>
           </div>
       </div>
