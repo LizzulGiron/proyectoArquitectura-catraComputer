@@ -67,6 +67,8 @@
                     <li class="" id="btn-depurar"><a href="#paso2" data-toggle="tab" data-paso="2"><span class="glyphicon glyphicon-thumbs-up"></span>Depurar</a></li>
                     <li class="" id="btn-ejecutar"><a href="#paso3" data-toggle="tab" data-paso="3"><span class="glyphicon glyphicon-tasks"></span> Ejecutar </a></li>
                    <li class="" id="btn-limpiar"><a href="#paso4" data-toggle="tab" data-paso="4"><span class="glyphicon glyphicon glyphicon-floppy-saved"></span>Limpiar</a></li>
+                   <li class="" id="btn-interfaz"><a href="#paso1" data-toggle="tab" data-paso="1"><span class="glyphicon glyphicon-user"></span>Regresar</a></li>
+
                 </ul>
             </div>
         </div>
@@ -211,7 +213,7 @@
                         </label>
                       </td>
                       <td>
-                        &nbsp&nbsp&nbsp<input type="text" name="txt-pc-ejecion" id="txt-pc-ejecucion" style="color: black">
+                        &nbsp&nbsp&nbsp<input type="text" name="txt-pc-ejecucion" id="txt-pc-ejecucion" style="color: black">
                       </td>
                     </tr>
                     <tr>
@@ -231,7 +233,7 @@
                         </label>
                       </td>
                       <td>
-                        &nbsp&nbsp&nbsp<input type="text" name="txt-ir" id="txt-ir" style="color: black">
+                        &nbsp&nbsp&nbsp<input type="text" name="txt-ir-ejecucion" id="txt-ir-ejecucion" style="color: black">
                       </td>
                     </tr>
                   </table>
@@ -246,8 +248,9 @@
                     <label>Resultado:</label>
                     &nbsp&nbsp&nbsp<input type="text" name="txt-resultado" id="txt-resultado" style="color: black">
                   </div>
+
                   </div>
-                  <a class="btn btn-default next" href="#" id="seguridad">Continuar</a>
+                  <!--<a class="btn btn-default next" href="#" id="seguridad">Continuar</a>-->
 
               </div>
               <!-- Tab "paso4" -->
@@ -273,26 +276,30 @@
                       <input type="text" name="txt-ubicacion-019" id="txt-ubicacion-018">
                       <input type="text" name="txt-ubicacion-020" id="txt-ubicacion-019">
 
-                      <input type="number" name="txt-variable-001" id="txt-variable-001">
-                      <input type="number" name="txt-variable-002" id="txt-variable-002">
-                      <input type="number" name="txt-variable-003" id="txt-variable-003">
-                      <input type="number" name="txt-variable-004" id="txt-variable-004">
-                      <input type="number" name="txt-variable-005" id="txt-variable-005">
-                      <input type="number" name="txt-variable-006" id="txt-variable-006">
-                      <input type="number" name="txt-variable-007" id="txt-variable-007">
-                      <input type="number" name="txt-variable-008" id="txt-variable-008">
-                      <input type="number" name="txt-variable-009" id="txt-variable-009">
-                      <input type="number" name="txt-variable-010" id="txt-variable-010">
-                      <input type="number" name="txt-variable-011" id="txt-variable-011">
-                      <input type="number" name="txt-variable-012" id="txt-variable-012">
-                      <input type="number" name="txt-variable-013" id="txt-variable-013">
-                      <input type="number" name="txt-variable-014" id="txt-variable-014">
-                      <input type="number" name="txt-variable-015" id="txt-variable-015">
-                      <input type="number" name="txt-variable-016" id="txt-variable-016">
-                      <input type="number" name="txt-variable-017" id="txt-variable-017">
-                      <input type="number" name="txt-variable-018" id="txt-variable-018">
-                      <input type="number" name="txt-variable-019" id="txt-variable-019">
-                      <input type="number" name="txt-variable-020" id="txt-variable-020">
+                      <input type="number" name="txt-bifurcacion-001" id="txt-bifurcacion-001">
+                      <input type="number" name="txt-bifurcacion-002" id="txt-bifurcacion-002">
+                      <input type="number" name="txt-bifurcacion-003" id="txt-bifurcacion-003">
+                      <input type="number" name="txt-bifurcacion-004" id="txt-bifurcacion-004">
+                      <input type="number" name="txt-bifurcacion-005" id="txt-bifurcacion-005">
+                      <input type="number" name="txt-bifurcacion-006" id="txt-bifurcacion-006">
+                      <input type="number" name="txt-bifurcacion-007" id="txt-bifurcacion-007">
+                      <input type="number" name="txt-bifurcacion-008" id="txt-bifurcacion-008">
+                      <input type="number" name="txt-bifurcacion-009" id="txt-bifurcacion-009">
+                      <input type="number" name="txt-bifurcacion-010" id="txt-bifurcacion-010">
+                      <input type="number" name="txt-bifurcacion-011" id="txt-bifurcacion-011">
+                      <input type="number" name="txt-bifurcacion-012" id="txt-bifurcacion-012">
+                      <input type="number" name="txt-bifurcacion-013" id="txt-bifurcacion-013">
+                      <input type="number" name="txt-bifurcacion-014" id="txt-bifurcacion-014">
+                      <input type="number" name="txt-bifurcacion-015" id="txt-bifurcacion-015">
+                      <input type="number" name="txt-bifurcacion-016" id="txt-bifurcacion-016">
+                      <input type="number" name="txt-bifurcacion-017" id="txt-bifurcacion-017">
+                      <input type="number" name="txt-bifurcacion-018" id="txt-bifurcacion-018">
+                      <input type="number" name="txt-bifurcacion-019" id="txt-bifurcacion-019">
+                      <input type="number" name="txt-bifurcacion-020" id="txt-bifurcacion-020">
+
+                      <input type="text" name="txt-inicio" id="txt-inicio">
+                      <input type="text" name="txt-final" id="txt-final">
+                      <input type="number" name="txt-iteracion" id="txt-iteracion">
 
                   
               </div>
