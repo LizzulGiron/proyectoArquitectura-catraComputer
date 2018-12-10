@@ -33,29 +33,7 @@
         <h4 class="modal-title" style="color: white">LMCC</h4>
       </div>
       <div class="modal-body" id="miAsistente">
-        
-
-
-
-        <!--<script type="">
-          var nombre = prompt('Ingrese su nombre: ','');
-          alert(nombre);
-        </script>-->
-
-
-
-
-
-
-
-          <!-- Progress barra, color verde -->
-          <!--<div class="progress" style="height: 20px">
-              <div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" aria-valuenow="1" aria-valuemin="1" aria-valuemax="4" style="width: 20%; height: 20px">
-                   Paso 1 de 4
-              </div>
-          </div>-->
-
-
+       
 
 
          <!-- Enlaces de navegación  -->
@@ -63,15 +41,21 @@
         
             <div class="navbar-inner col-md-offset-2">
                 <ul class="nav nav-pills">
-                    <li class="active" id="btn-compilar"><a href="#paso1" data-toggle="tab" data-paso="1"><span class="glyphicon glyphicon-user"></span> Compilar</a></li>
-                    <li class="" id="btn-depurar"><a href="#paso2" data-toggle="tab" data-paso="2"><span class="glyphicon glyphicon-thumbs-up"></span>Depurar</a></li>
-                    <li class="" id="btn-ejecutar"><a href="#paso3" data-toggle="tab" data-paso="3"><span class="glyphicon glyphicon-tasks"></span> Ejecutar </a></li>
-                   <li class="" id="btn-limpiar"><a href="#paso4" data-toggle="tab" data-paso="4"><span class="glyphicon glyphicon glyphicon-floppy-saved"></span>Limpiar</a></li>
-                   <li class="" id="btn-interfaz"><a href="#paso1" data-toggle="tab" data-paso="1"><span class="glyphicon glyphicon-user"></span>Regresar</a></li>
-
+                    <li class="active" id="btn-compilar"><a href="#paso1" data-toggle="tab" data-paso="1"><span class="glyphicon glyphicon-check"></span>  Compilar</a></li>
+                    <li class="" id="btn-depurar"><a href="#paso2" data-toggle="tab" data-paso="2"><span class="glyphicon glyphicon-thumbs-up"></span>  Depurar</a></li>
+                    <li class="" id="btn-ejecutar"><a href="#paso3" data-toggle="tab" data-paso="3"><span class="glyphicon glyphicon-tasks"></span>  Ejecutar </a></li>
+                   <li class="" id="btn-limpiar"><a href="#" data-toggle="tab" data-paso="4"><span class="glyphicon glyphicon glyphicon-trash"></span> Limpiar</a></li>
+                   <li class="active" id="btn-interfaz"><a href="#paso1" data-toggle="tab" data-paso="1"><span class="glyphicon glyphicon-user"></span>  Regresar</a></li>
+                  </div>
+                  <hr>
+                  <div class="col-md-12 col-lg-12 alert alert-danger" id="div-mensaje">Formato de instrucciones incorrectas!</div>
+                  
                 </ul>
+                
             </div>
+            
         </div>
+        
 
 
           <!-- Contenido de todos los tabs -->
@@ -81,7 +65,7 @@
 
                   <!-- Definicion de la interfaz grafica -->
 
-                  <div class="well" style="background-color: rgba(0,0,0,5) ;border-radius: 25px;text-align: center;color: white;margin-top: -15px">
+                  <div class="well" style="background-color: rgba(0,0,0,5) ;border-radius: 25px;text-align: center;color: white;margin-top: -30px">
                       <div class="row">
                       <div class="col-md-4">
                          Ubicacion
@@ -174,7 +158,6 @@
                       
                     </div>
                   </div>
-                  <a class="btn btn-default next" href="#" id="personal">Continuar</a>
               </div>
       <!-- ######################################################################################### -->
 
@@ -197,7 +180,6 @@
                     </div>
                       
                   </div>
-                  <a class="btn btn-default next" href="#" id="social">Continuar</a>
               </div>
               <!-- Tab "paso3" -->
               <div class="tab-pane fade" id="paso3">
@@ -308,7 +290,6 @@
 
        <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-        <button class="btn btn-primary">Enviar</button>
       </div>
       <!-- Fin del contenido del modal -->
       </div>
@@ -316,6 +297,7 @@
   </div>
 
   
+
   <script type="text/javascript" src="js/jquery-3.2.1.js"></script>
   <script src="js/jquery-ui.js"></script>
   <script type="text/javascript" src="js/bootstrap.js"></script>

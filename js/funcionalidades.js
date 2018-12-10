@@ -20,6 +20,7 @@ $(document).ready(function(){
   $('#txt-contenedor-18').val("018");
   $('#txt-contenedor-19').val("019");
   $('#btn-interfaz').hide();
+  $('#div-mensaje').hide();
 
 
  //
@@ -58,12 +59,12 @@ for (var i = 0; i < 20; i++) {
 
 //############################################################################
 $('#btn-limpiar').click(function(){
-    for (var i = 0; i < 20; i--) {
+    for (var i = 0; i < 20; i++) {
         var contenido = '#txt-contenido-'+i;
         $(contenido).val(" ");
       
     }
-    for (var i = 0; i < 20; i--) {
+    for (var i = 0; i < 20; i++) {
         var instruccion = '#txt-instruccion-'+i;
         $(instruccion).val(" ");
       
@@ -81,18 +82,27 @@ $('#btn-ejecutar').click(function(){
     $("#txt-ir-ejecucion").val(" ");
     $("#txt-resultado").val(" ");
     $("#btn-limpiar").hide();
-    ejecutar();
+    compilar();
+    if (compilar) {
+        ejecutar();
+    }
+    else{
+        compilar();
+    }
+    
     
 });
 //############################################################################
 function ejecutar(){
-    $("#txt-acumulador-ejecucion").val('000');
+    //$("#txt-acumulador-ejecucion").val('000');
+
     for (var i = 0; i < 20; i++) {
            var input = "#txt-contenido-"+i+"";
            var cadena = $(input).val();
            var subcadena1 = cadena.substring(0,2);
            var subcadena = cadena.substring(2,5);
            switch(subcadena1){
+            //-----------------------------------------------------------------------------
              case '10':
                 var subcadena = cadena.substring(2,5);
                 var numero = prompt('Ingrese el numero que ingresara en la posicion '+ subcadena+': ','');
@@ -108,10 +118,21 @@ function ejecutar(){
                 }
                 $("#txt-ir-ejecucion").val(cadena);
              break;
+             //-----------------------------------------------------------------------------
              case '11':
                  var ubicacion = "#txt-ubicacion-"+subcadena;
-                 var acumulador = $(ubicacion).val();
-                 document.getElementById("txt-pantalla").innerHTML += acumulador;
+                 var contenido = $(ubicacion).val();
+                 if (contenido != "") {
+                    document.getElementById("txt-pantalla").innerHTML = contenido;
+                 }
+                 if (contenido == "") {
+                    var iteracion = parseInt(subcadena);
+                    var instruccion = "#txt-contenido-"+iteracion;
+                    var contenidoInput = $(instruccion).val();
+                    var almacenar = parseInt(contenidoInput);
+                    document.getElementById("txt-pantalla").innerHTML = almacenar;
+                 }
+                 
                  if (i < 10) {
                     var acumuladorEjecucion = "00"+(i+1);
                     $('#txt-pc-ejecucion').val(acumuladorEjecucion);
@@ -122,10 +143,20 @@ function ejecutar(){
                  }
                  $("#txt-ir-ejecucion").val(cadena);
              break;
+//-----------------------------------------------------------------------------
              case '20':
                  var ubicacion = "#txt-ubicacion-"+subcadena;
                  var contenido = $(ubicacion).val();
-                 $("#txt-acumulador-ejecucion").val(contenido);
+                 if (contenido == "") {
+                    var iteracion = parseInt(subcadena);
+                    var instruccion = "#txt-contenido-"+iteracion;
+                    var contenidoInput = $(instruccion).val();
+                    var almacenar = parseInt(contenidoInput);
+                    $("#txt-acumulador-ejecucion").val(almacenar);
+                 }
+                 if (contenido != "") {
+                    $("#txt-acumulador-ejecucion").val(contenido);
+                 }
                  if (i < 10) {
                     var acumuladorEjecucion = "00"+(i+1);
                     $('#txt-pc-ejecucion').val(acumuladorEjecucion);
@@ -136,6 +167,7 @@ function ejecutar(){
                 }
                 $("#txt-ir-ejecucion").val(cadena);
              break;
+             //-----------------------------------------------------------------------------
              case '21':
                 var acumulador = $('#txt-acumulador-ejecucion').val();
                 var ubicacion = "#txt-ubicacion-"+subcadena;
@@ -150,14 +182,28 @@ function ejecutar(){
                 }
                 $("#txt-ir-ejecucion").val(cadena);
              break;
+             //-----------------------------------------------------------------------------
              case '30':
                  var ubicacion = "#txt-ubicacion-"+subcadena;
                  var contenido = $(ubicacion).val();
-                 var contenido1 = parseInt(contenido);
-                 var acumulador = parseInt($('#txt-acumulador-ejecucion').val());
-                 var acumulador1 = parseInt(acumulador);
-                 var resultado = contenido1 + acumulador1;
-                 $("#txt-acumulador-ejecucion").val(resultado);
+                 if (contenido == "") {
+                    var iteracion = parseInt(subcadena);
+                    var instruccion = "#txt-contenido-"+iteracion;
+                    var contenidoInput = $(instruccion).val();
+                    var almacenar = parseInt(contenidoInput);
+                    //--------------------------------------------------------------
+                    var acumulador = parseInt($('#txt-acumulador-ejecucion').val());
+                    var acumulador1 = parseInt(acumulador);
+                    var resultado = almacenar + acumulador1;
+                    $("#txt-acumulador-ejecucion").val(resultado);
+                 }
+                 if (contenido != "") {
+                    var contenido1 = parseInt(contenido);
+                    var acumulador = parseInt($('#txt-acumulador-ejecucion').val());
+                    var acumulador1 = parseInt(acumulador);
+                    var resultado = contenido1 + acumulador1;
+                    $("#txt-acumulador-ejecucion").val(resultado);
+                 }
                  if (i < 10) {
                     var acumuladorEjecucion = "00"+(i+1);
                     $('#txt-pc-ejecucion').val(acumuladorEjecucion);
@@ -168,15 +214,28 @@ function ejecutar(){
                 }
                 $("#txt-ir-ejecucion").val(cadena);
              break;
+             //-----------------------------------------------------------------------------
              case '31':
                  var ubicacion = "#txt-ubicacion-"+subcadena;
                  var contenido = $(ubicacion).val();
-                 var contenido1 = parseInt(contenido);
-                 var acumulador = parseInt($('#txt-acumulador-ejecucion').val());
-                 var acumulador1 = parseInt(acumulador);
-                 var resultado = acumulador1 - contenido1 ;
-                 //alert(resultado);
-                 $("#txt-acumulador-ejecucion").val(resultado);
+                 if (contenido == "") {
+                    var iteracion = parseInt(subcadena);
+                    var instruccion = "#txt-contenido-"+iteracion;
+                    var contenidoInput = $(instruccion).val();
+                    var almacenar = parseInt(contenidoInput);
+                    //--------------------------------------------------------------
+                    var acumulador = parseInt($('#txt-acumulador-ejecucion').val());
+                    var acumulador1 = parseInt(acumulador);
+                    var resultado = acumulador1 - almacenar;
+                    $("#txt-acumulador-ejecucion").val(resultado);
+                 }
+                 if (contenido != "") {
+                    var contenido1 = parseInt(contenido);
+                    var acumulador = parseInt($('#txt-acumulador-ejecucion').val());
+                    var acumulador1 = parseInt(acumulador);
+                    var resultado =   acumulador1 - contenido1;
+                    $("#txt-acumulador-ejecucion").val(resultado);
+                 }
                  if (i < 10) {
                     var acumuladorEjecucion = "00"+(i+1);
                     $('#txt-pc-ejecucion').val(acumuladorEjecucion);
@@ -187,14 +246,28 @@ function ejecutar(){
                 }
                 $("#txt-ir-ejecucion").val(cadena);
              break;
+             //-----------------------------------------------------------------------------
              case '32':
                  var ubicacion = "#txt-ubicacion-"+subcadena;
                  var contenido = $(ubicacion).val();
-                 var contenido1 = parseInt(contenido);
-                 var acumulador = parseInt($('#txt-acumulador-ejecucion').val());
-                 var acumulador1 = parseInt(acumulador);
-                 var resultado = contenido1 / acumulador1 ;
-                 $("#txt-acumulador-ejecucion").val(resultado);
+                 if (contenido == "") {
+                    var iteracion = parseInt(subcadena);
+                    var instruccion = "#txt-contenido-"+iteracion;
+                    var contenidoInput = $(instruccion).val();
+                    var almacenar = parseInt(contenidoInput);
+                    //--------------------------------------------------------------
+                    var acumulador = parseInt($('#txt-acumulador-ejecucion').val());
+                    var acumulador1 = parseInt(acumulador);
+                    var resultado = almacenar / acumulador1 ;
+                    $("#txt-acumulador-ejecucion").val(resultado);
+                 }
+                 if (contenido != "") {
+                    var contenido1 = parseInt(contenido);
+                    var acumulador = parseInt($('#txt-acumulador-ejecucion').val());
+                    var acumulador1 = parseInt(acumulador);
+                    var resultado =   contenido1 / acumulador1 ;
+                    $("#txt-acumulador-ejecucion").val(resultado);
+                 }
                  if (i < 10) {
                     var acumuladorEjecucion = "00"+(i+1);
                     $('#txt-pc-ejecucion').val(acumuladorEjecucion);
@@ -205,14 +278,28 @@ function ejecutar(){
                 }
                 $("#txt-ir-ejecucion").val(cadena);
              break;
+             //-----------------------------------------------------------------------------
              case '33':
                  var ubicacion = "#txt-ubicacion-"+subcadena;
                  var contenido = $(ubicacion).val();
-                 var contenido1 = parseInt(contenido);
-                 var acumulador = parseInt($('#txt-acumulador-ejecucion').val());
-                 var acumulador1 = parseInt(acumulador);
-                 var resultado = acumulador1 * contenido1 ;
-                 $("#txt-acumulador-ejecucion").val(resultado);
+                 if (contenido == "") {
+                    var iteracion = parseInt(subcadena);
+                    var instruccion = "#txt-contenido-"+iteracion;
+                    var contenidoInput = $(instruccion).val();
+                    var almacenar = parseInt(contenidoInput);
+                    //--------------------------------------------------------------
+                    var acumulador = parseInt($('#txt-acumulador-ejecucion').val());
+                    var acumulador1 = parseInt(acumulador);
+                    var resultado = almacenar * acumulador1 ;
+                    $("#txt-acumulador-ejecucion").val(resultado);
+                 }
+                 if (contenido != "") {
+                    var contenido1 = parseInt(contenido);
+                    var acumulador = parseInt($('#txt-acumulador-ejecucion').val());
+                    var acumulador1 = parseInt(acumulador);
+                    var resultado =   contenido1 * acumulador1 ;
+                    $("#txt-acumulador-ejecucion").val(resultado);
+                 }
                  if (i < 10) {
                     var acumuladorEjecucion = "00"+(i+1);
                     $('#txt-pc-ejecucion').val(acumuladorEjecucion);
@@ -223,6 +310,7 @@ function ejecutar(){
                 }
                 $("#txt-ir-ejecucion").val(cadena);
              break;
+             //-----------------------------------------------------------------------------
              case '40':
                  if (i < 10 ) {
                     var instruccionInicio = "00" + i;
@@ -234,7 +322,9 @@ function ejecutar(){
                  }
                  var instruccionFinal = parseInt(subcadena);
                  var instruccionInicial = parseInt(instruccionInicio);
-                 for (var n = instruccionInicial ; n < instruccionFinal - 1; n++) {
+
+                 if (instruccionInicial < instruccionFinal) {
+                    for (var n = instruccionInicial ; n < instruccionFinal - 1; n++) {
                         var instruccionBorrar = "#txt-contenido-"+(n+1);
                         if (i < 10) {
                             var bifurcacion = "#txt-bifurcacion-00"+n;
@@ -244,24 +334,28 @@ function ejecutar(){
                         var respaldoBifurcacion = $(instruccionBorrar).val();
                         $(bifurcacion).val(respaldoBifurcacion);
                         $(instruccionBorrar).val(" ");                     
-                 }
+                    }
                  respaldo(instruccionInicio,subcadena,i);
-                 $("#txt-ir-ejecucion").val(cadena);
                  var contenido = parseInt(subcadena);
                  ejecutarBifurcacion(contenido);
-
+                 }
+                 $("#txt-ir-ejecucion").val(cadena);
              break;
+             //-----------------------------------------------------------------------------
              case '41':
                  if (parseInt($('#txt-acumulador-ejecucion').val()) < 0) {
                     if (i < 10 ) {
-                        var instruccionInicio = "00" + i;
-                    }
-                    if (i > 9 && i < 20) {
-                       var instruccionInicio = "0" + i;
-                       var bifurcacion = "#txt-bifurcacion-"+instruccionInicio;
-                    }
-                    var instruccionFinal = parseInt(subcadena);
-                    var instruccionInicial = parseInt(instruccionInicio);
+                    var instruccionInicio = "00" + i;
+                    
+                 }
+                 if (i > 9 && i < 20) {
+                    var instruccionInicio = "0" + i;
+                    var bifurcacion = "#txt-bifurcacion-"+instruccionInicio;
+                 }
+                 var instruccionFinal = parseInt(subcadena);
+                 var instruccionInicial = parseInt(instruccionInicio);
+
+                 if (instruccionInicial < instruccionFinal) {
                     for (var n = instruccionInicial ; n < instruccionFinal - 1; n++) {
                         var instruccionBorrar = "#txt-contenido-"+(n+1);
                         if (i < 10) {
@@ -273,23 +367,28 @@ function ejecutar(){
                         $(bifurcacion).val(respaldoBifurcacion);
                         $(instruccionBorrar).val(" ");                     
                     }
-                    respaldo(instruccionInicio,subcadena,i);
-                    $("#txt-ir-ejecucion").val(cadena);
-                    var contenido = parseInt(subcadena);
-                    ejecutarBifurcacion(contenido);
+                 respaldo(instruccionInicio,subcadena,i);
+                 var contenido = parseInt(subcadena);
+                 ejecutarBifurcacion(contenido);
+                 }                
+                 
                 }
              break;
+             //-----------------------------------------------------------------------------
              case '42':
                  if (parseInt($('#txt-acumulador-ejecucion').val()) == 0) {
-                        if (i < 10 ) {
-                        var instruccionInicio = "00" + i;
-                    }
-                    if (i > 9 && i < 20) {
-                       var instruccionInicio = "0" + i;
-                       var bifurcacion = "#txt-bifurcacion-"+instruccionInicio;
-                    }
-                    var instruccionFinal = parseInt(subcadena);
-                    var instruccionInicial = parseInt(instruccionInicio);
+                    if (i < 10 ) {
+                    var instruccionInicio = "00" + i;
+                    
+                 }
+                 if (i > 9 && i < 20) {
+                    var instruccionInicio = "0" + i;
+                    var bifurcacion = "#txt-bifurcacion-"+instruccionInicio;
+                 }
+                 var instruccionFinal = parseInt(subcadena);
+                 var instruccionInicial = parseInt(instruccionInicio);
+
+                 if (instruccionInicial < instruccionFinal) {
                     for (var n = instruccionInicial ; n < instruccionFinal - 1; n++) {
                         var instruccionBorrar = "#txt-contenido-"+(n+1);
                         if (i < 10) {
@@ -301,12 +400,14 @@ function ejecutar(){
                         $(bifurcacion).val(respaldoBifurcacion);
                         $(instruccionBorrar).val(" ");                     
                     }
-                    respaldo(instruccionInicio,subcadena,i);
-                    $("#txt-ir-ejecucion").val(cadena);
-                    var contenido = parseInt(subcadena);
-                    ejecutarBifurcacion(contenido);
+                 respaldo(instruccionInicio,subcadena,i);
+                 var contenido = parseInt(subcadena);
+                 ejecutarBifurcacion(contenido);
                  }
+ 
+            }
              break;
+             //-----------------------------------------------------------------------------
              case '43':
                 if (i < 10 ) {
                     var instruccionInicio = "00" + i;
@@ -349,7 +450,6 @@ $("#btn-interfaz").click(function(){
      var instruccionFinal = parseInt(final);
     for (var n = instruccionInicial ; n < instruccionFinal - 1; n++) {
         var reemplazo = "#txt-contenido-"+(n+1);
-        //alert(reemplazo);
         if (i < 10) {
             var bifurcacion = "#txt-bifurcacion-00"+n;
         }
@@ -371,62 +471,134 @@ function ejecutarBifurcacion(saltoInstruccion){
             var subcadena1 = cadena.substring(0,2);
            var subcadena = cadena.substring(2,5);
            switch(subcadena1){
+//-------------------------------------------------------------------------------------------------------------
              case '10':
                 var subcadena = cadena.substring(2,5);
                 var numero = prompt('Ingrese el numero que ingresara en la posicion '+ subcadena+': ','');
                 var ubicacion = '#txt-ubicacion-'+subcadena;
                 $(ubicacion).val(numero);
              break;
+//-------------------------------------------------------------------------------------------------------------
              case '11':
                  var ubicacion = "#txt-ubicacion-"+subcadena;
                  var  mensaje = $(ubicacion).val();
              break;
+//-------------------------------------------------------------------------------------------------------------
              case '20':
                  var ubicacion = "#txt-ubicacion-"+subcadena;
                  var contenido = $(ubicacion).val();
-                 $("#txt-acumulador-ejecucion").val(contenido);
+                 if (contenido == "") {
+                    var iteracion = parseInt(subcadena);
+                    var instruccion = "#txt-contenido-"+iteracion;
+                    var contenidoInput = $(instruccion).val();
+                    var almacenar = parseInt(contenidoInput);
+                    $("#txt-acumulador-ejecucion").val(almacenar);
+                 }
+                 if (contenido != "") {
+                    $("#txt-acumulador-ejecucion").val(contenido);
+                 }
              break;
+//-------------------------------------------------------------------------------------------------------------
              case '21':
                 var acumulador = $('#txt-acumulador-ejecucion').val();
                 var ubicacion = "#txt-ubicacion-"+subcadena;
                 $(ubicacion).val(acumulador);
              break;
+//-------------------------------------------------------------------------------------------------------------
              case '30':
                  var ubicacion = "#txt-ubicacion-"+subcadena;
                  var contenido = $(ubicacion).val();
-                 var contenido1 = parseInt(contenido);
-                 var acumulador = parseInt($('#txt-acumulador-ejecucion').val());
-                 var acumulador1 = parseInt(acumulador);
-                 var resultado = contenido1 + acumulador1;
-                 $("#txt-acumulador-ejecucion").val(resultado);
+                 if (contenido == "") {
+                    var iteracion = parseInt(subcadena);
+                    var instruccion = "#txt-contenido-"+iteracion;
+                    var contenidoInput = $(instruccion).val();
+                    var almacenar = parseInt(contenidoInput);
+                    //--------------------------------------------------------------
+                    var acumulador = parseInt($('#txt-acumulador-ejecucion').val());
+                    var acumulador1 = parseInt(acumulador);
+                    var resultado = almacenar + acumulador1;
+                    $("#txt-acumulador-ejecucion").val(resultado);
+                 }
+                 if (contenido != "") {
+                    var contenido1 = parseInt(contenido);
+                    var acumulador = parseInt($('#txt-acumulador-ejecucion').val());
+                    var acumulador1 = parseInt(acumulador);
+                    var resultado = contenido1 + acumulador1;
+                    $("#txt-acumulador-ejecucion").val(resultado);
+                 }
              break;
+//-------------------------------------------------------------------------------------------------------------
              case '31':
                  var ubicacion = "#txt-ubicacion-"+subcadena;
                  var contenido = $(ubicacion).val();
-                 var contenido1 = parseInt(contenido);
-                 var acumulador = parseInt($('#txt-acumulador-ejecucion').val());
-                 var acumulador1 = parseInt(acumulador);
-                 var resultado = acumulador1 - contenido1 ;
-                 $("#txt-acumulador-ejecucion").val(resultado);
+                 if (contenido == "") {
+                    var iteracion = parseInt(subcadena);
+                    var instruccion = "#txt-contenido-"+iteracion;
+                    var contenidoInput = $(instruccion).val();
+                    var almacenar = parseInt(contenidoInput);
+                    //--------------------------------------------------------------
+                    var acumulador = parseInt($('#txt-acumulador-ejecucion').val());
+                    var acumulador1 = parseInt(acumulador);
+                    var resultado = acumulador1 - almacenar;
+                    $("#txt-acumulador-ejecucion").val(resultado);
+                 }
+                 if (contenido != "") {
+                    var contenido1 = parseInt(contenido);
+                    var acumulador = parseInt($('#txt-acumulador-ejecucion').val());
+                    var acumulador1 = parseInt(acumulador);
+                    var resultado =   acumulador1 - contenido1;
+                    $("#txt-acumulador-ejecucion").val(resultado);
+                 }
+                 
+                $("#txt-ir-ejecucion").val(cadena);
              break;
+//-------------------------------------------------------------------------------------------------------------
              case '32':
                  var ubicacion = "#txt-ubicacion-"+subcadena;
                  var contenido = $(ubicacion).val();
-                 var contenido1 = parseInt(contenido);
-                 var acumulador = parseInt($('#txt-acumulador-ejecucion').val());
-                 var acumulador1 = parseInt(acumulador);
-                 var resultado = acumulador1 / contenido1 ;
-                 $("#txt-acumulador-ejecucion").val(resultado);
+                 if (contenido == "") {
+                    var iteracion = parseInt(subcadena);
+                    var instruccion = "#txt-contenido-"+iteracion;
+                    var contenidoInput = $(instruccion).val();
+                    var almacenar = parseInt(contenidoInput);
+                    //--------------------------------------------------------------
+                    var acumulador = parseInt($('#txt-acumulador-ejecucion').val());
+                    var acumulador1 = parseInt(acumulador);
+                    var resultado = almacenar / acumulador1 ;
+                    $("#txt-acumulador-ejecucion").val(resultado);
+                 }
+                 if (contenido != "") {
+                    var contenido1 = parseInt(contenido);
+                    var acumulador = parseInt($('#txt-acumulador-ejecucion').val());
+                    var acumulador1 = parseInt(acumulador);
+                    var resultado =   contenido1 / acumulador1 ;
+                    $("#txt-acumulador-ejecucion").val(resultado);
+                 }
              break;
+//-------------------------------------------------------------------------------------------------------------
              case '33':
                  var ubicacion = "#txt-ubicacion-"+subcadena;
                  var contenido = $(ubicacion).val();
-                 var contenido1 = parseInt(contenido);
-                 var acumulador = parseInt($('#txt-acumulador-ejecucion').val());
-                 var acumulador1 = parseInt(acumulador);
-                 var resultado = acumulador1 * contenido1 ;
-                 $("#txt-acumulador-ejecucion").val(resultado);
+                 if (contenido == "") {
+                    var iteracion = parseInt(subcadena);
+                    var instruccion = "#txt-contenido-"+iteracion;
+                    var contenidoInput = $(instruccion).val();
+                    var almacenar = parseInt(contenidoInput);
+                    //--------------------------------------------------------------
+                    var acumulador = parseInt($('#txt-acumulador-ejecucion').val());
+                    var acumulador1 = parseInt(acumulador);
+                    var resultado = almacenar * acumulador1 ;
+                    $("#txt-acumulador-ejecucion").val(resultado);
+                 }
+                 if (contenido != "") {
+                    var contenido1 = parseInt(contenido);
+                    var acumulador = parseInt($('#txt-acumulador-ejecucion').val());
+                    var acumulador1 = parseInt(acumulador);
+                    var resultado =   contenido1 * acumulador1 ;
+                    $("#txt-acumulador-ejecucion").val(resultado);
+                 }
              break;
+//-------------------------------------------------------------------------------------------------------------
              case '40':
                  var contenido = "#txt-contenido-"+subcadena;
                  var instruccion = $(contenido).val();
@@ -435,69 +607,64 @@ function ejecutarBifurcacion(saltoInstruccion){
              break;
            
         }
-        }
+    }
 };
-//##############################################################################################
+
+
+
+//########################################################################## 
+
 $('#btn-compilar').click(function(){
-        var arrayInstrucciones = ["10:Leer","11:Escribir","20:Cargar","21:Almacenar","30:Sumar","31:Restar","32:Dividir","33:Multiplicar","40:Bifurca","41:Bifurca negativo","42:Bifurca cero","43:Alto"];
-        var regex = /^(10|11|20|21|30|31|32|33|40|41|42|43)[0-9]{3}$/;
-        for (var i = 1; i  < 2; i++) {
-            var input = "#txt-contenido-"+i+"";
-            var input1 = "#txt-instruccion-"+i;
-            var cadena = $(input).val();
-            //alert(cadena);
+    compilar();
+        
+});
+
+//##########################################################################
+
+
+function compilar(){
+    var arrayInstrucciones = ["10:Leer un numero      ","11:Escribir en pantalla","20:Cargar en AC         ","21:Almacenar memoria     ","30:Sumar AC               ","31:Restar AC                ","32:Dividir AC               ","33:Multiplicar AC                ","40:Bifurca               ","41:Bifurca negativo               ","42:Bifurca cero               ","43:Fin ejecucion                 "];
+    var regex = /^(10|11|20|21|30|31|32|33|40|41|42|43|00)[0-9]{3}$/;
+    var comprobacion = 0;
+    for (var i = 0; i < 20; i++) {
+        var input = "#txt-contenido-"+i+"";
+        var input1 = "#txt-instruccion-"+i;
+        var cadena = $(input).val();
+        if (cadena != "") {
             var contenido = regex.test(cadena.trim());
-            //alert(contenido);
             var subcadena = cadena.substring(2,5);
-            //alert(subcadena);
             var subcadena1 = cadena.substring(0,2);
-            //alert(subcadena1);
-            var prueba = subcadena == (001||002);
-            //alert(prueba);
-            if ((contenido) && (subcadena == ('001'||'002'))) {
+            if (contenido ) {
                 $(input).css("background-color", "white");
-                for (var i = 0; i < 13; i++) {
-                    var instruccion = '"'+arrayInstrucciones[i]+'"';
+                for (var j = 0; j < 13; j++) {
+                    var instruccion = '"'+arrayInstrucciones[j]+'"';
                     var contenidoInstruccion = instruccion.substring(1,3);
-                    var contenidoInstruccion1 = instruccion.substring(4,15);
+                    var contenidoInstruccion1 = instruccion.substring(4,24);
                     if (contenidoInstruccion == subcadena1 ) {
-                        //alert(contenidoInstruccion1);
                         $(input1).val(contenidoInstruccion1);
                     }
                 }
             }
-            else
+            else{
                 $(input).focus();
                 $(":focus").css("background-color", "#D5F5E3");
+                $("#div-mensaje").show();
+                var comprobacion = comprobacion + 1;
+            }
         }
-
-        //Prueba de la correspondencia de la instruccion
-        var input2 = "#txt-instruccion-"+i+"";
-        var subcadena2 = cadena.substring(0,2);
-        for (var i = 0; i < 12; i++) {
-          if (arrayInstrucciones[i][0] == subcadena2) {
-              var instruccion = arrayInstrucciones[i][1];
-              $(input2).val(instruccion);
-          }
-        }
-
-});
+    }
+    if ( comprobacion == 0){
+        $("#div-mensaje").hide();
+        return false;
+    }
+    return true;
+}
 
 //##########################################################################
 $('#btn-depurar').click(function(){
     $("#btn-compilar").hide();
     $("#btn-depurar").hide();
     $("#btn-interfaz").show();
-    for (var i = 0; i < 20; i++) {
-    if (i < 10) {
-        var id = "#txt-acumulador-"+i;
-        $(id).val("000");
-    }
-    if (i > 9 && i < 20) {
-        var id = "#txt-acumulador-"+i;
-        $(id).val("000");
-    }
-    }
     for (var i = 0; i < 20; i++) {
         var input = "#txt-contenido-"+i+"";
         var cadena = $(input).val();
@@ -542,18 +709,28 @@ $('#btn-depurar').click(function(){
             case '20':
                 var ubicacion = "#txt-ubicacion-"+subcadena;
                 var contenido = $(ubicacion).val();
-                var acumulador = "#txt-acumulador-"+i;
-                $(acumulador).val(contenido);
-                if ( i < 10) {
-                    var siguiente = "00"+(i+1);
+                if (contenido != "") {
+                    var acumulador = "#txt-acumulador-"+i;
+                    $(acumulador).val(contenido);
                 }
-                if (i > 9 && i < 20) {
-                    var siguiente = "0"+(i+1);
-                }
-                var pc = "#txt-pc-"+i;
-                $(pc).val(siguiente);
-                var ir = "#txt-ir-"+i;
-                $(ir).val(cadena);
+                if (contenido == "") {
+                    var iteracion = parseInt(subcadena);
+                    var instruccion = "#txt-contenido-"+iteracion;
+                    var contenidoInput = $(instruccion).val();
+                    var almacenar = parseInt(contenidoInput);
+                    var reemplazo = "#txt-acumulador-"+i;
+                    $(reemplazo).val(almacenar);
+                 }
+                 if ( i < 10) {
+                        var siguiente = "00"+(i+1);
+                    }
+                    if (i > 9 && i < 20) {
+                        var siguiente = "0"+(i+1);
+                    }
+                    var pc = "#txt-pc-"+i;
+                    $(pc).val(siguiente);
+                    var ir = "#txt-ir-"+i;
+                    $(ir).val(cadena);
             break;
             case '21':
                 var acumuladorAnterior = "#txt-acumulador-"+(i-1);
@@ -578,252 +755,76 @@ $('#btn-depurar').click(function(){
                 var ubicacion = "#txt-ubicacion-"+subcadena;
                 var contenido = $(ubicacion).val();
                 var contenido1 = parseInt(contenido);
-                //--------------------------------------------------------
-                var acumuladorAnterior = "#txt-acumulador-"+(i-1);
-                var contenidoAcumulador1 = $(acumuladorAnterior).val();
-                var contenidoAcumulador = parseInt(contenidoAcumulador1);
-                var resultado = contenido1 + contenidoAcumulador;
-                var acumuladorSiguiente = "#txt-acumulador-"+i;
-                $(acumuladorSiguiente).val(resultado);
-                if ( i < 10) {
-                    var siguiente = "00"+(i+1);
+                if (contenido != "") {
+                    var acumuladorAnterior = "#txt-acumulador-"+(i-1);
+                    var contenidoAcumulador1 = $(acumuladorAnterior).val();
+                    var contenidoAcumulador = parseInt(contenidoAcumulador1);
+                    var resultado = contenido1 + contenidoAcumulador;
+                    var acumuladorSiguiente = "#txt-acumulador-"+i;
+                    $(acumuladorSiguiente).val(resultado);
                 }
-                if (i > 9 && i < 20) {
-                    var siguiente = "0"+(i+1);
-                }
-                var pc = "#txt-pc-"+i;
-                $(pc).val(siguiente);
-                var ir = "#txt-ir-"+i;
-                $(ir).val(cadena);
-            break;
-            case '31':
-                var ubicacion = "#txt-ubicacion-"+subcadena;
-                var contenido = $(ubicacion).val();
-                var contenido1 = parseInt(contenido);
-                //--------------------------------------------------------
-                var acumuladorAnterior = "#txt-acumulador-"+(i-1);
-                var contenidoAcumulador1 = $(acumuladorAnterior).val();
-                var contenidoAcumulador = parseInt(contenidoAcumulador1);
-                var resultado = contenidoAcumulador - contenido1;
-                var acumuladorSiguiente = "#txt-acumulador-"+i;
-                $(acumuladorSiguiente).val(resultado);
-                if ( i < 10) {
-                    var siguiente = "00"+(i+1);
-                }
-                if (i > 9 && i < 20) {
-                    var siguiente = "0"+(i+1);
-                }
-                var pc = "#txt-pc-"+i;
-                $(pc).val(siguiente);
-                var ir = "#txt-ir-"+i;
-                $(ir).val(cadena);
-            break;
-            case '32':
-                var ubicacion = "#txt-ubicacion-"+subcadena;
-                var contenido = $(ubicacion).val();
-                var contenido1 = parseInt(contenido);
-                //--------------------------------------------------------
-                var acumuladorAnterior = "#txt-acumulador-"+(i-1);
-                var contenidoAcumulador1 = $(acumuladorAnterior).val();
-                var contenidoAcumulador = parseInt(contenidoAcumulador1);
-                var resultado = contenido1 / contenidoAcumulador ;
-                var acumuladorSiguiente = "#txt-acumulador-"+i;
-                $(acumuladorSiguiente).val(resultado);
-                if ( i < 10) {
-                    var siguiente = "00"+(i+1);
-                }
-                if (i > 9 && i < 20) {
-                    var siguiente = "0"+(i+1);
-                }
-                var pc = "#txt-pc-"+i;
-                $(pc).val(siguiente);
-                var ir = "#txt-ir-"+i;
-                $(ir).val(cadena);
-            break;
-            case '33':
-                var ubicacion = "#txt-ubicacion-"+subcadena;
-                var contenido = $(ubicacion).val();
-                var contenido1 = parseInt(contenido);
-                //--------------------------------------------------------
-                var acumuladorAnterior = "#txt-acumulador-"+(i-1);
-                var contenidoAcumulador1 = $(acumuladorAnterior).val();
-                var contenidoAcumulador = parseInt(contenidoAcumulador1);
-                var resultado = contenido1 * contenidoAcumulador ;
-                var acumuladorSiguiente = "#txt-acumulador-"+i;
-                $(acumuladorSiguiente).val(resultado);
-                if ( i < 10) {
-                    var siguiente = "00"+(i+1);
-                }
-                if (i > 9 && i < 20) {
-                    var siguiente = "0"+(i+1);
-                }
-                var pc = "#txt-pc-"+i;
-                $(pc).val(siguiente);
-                var ir = "#txt-ir-"+i;
-                $(ir).val(cadena);
-            break;
-            case '40':
-                if (i < 10 ) {
-                    var instruccionInicio = "00" + i;
+                if (contenido == "") {
+                    var iteracion = parseInt(subcadena);
+                    var instruccion = "#txt-contenido-"+iteracion;
+                    var contenidoInput = $(instruccion).val();
+                    var almacenar = parseInt(contenidoInput);
+                    //--------------------------------------------------------------
+                    var anterior = "#txt-contenido-"+(i-1);
+                    var contenedor = $(anterior).val()
+                    var subcadenaAnterior = contenedor.substring(0,2);
+                    if (subcadenaAnterior == '00') {
+                        var acumuladorAnterior = "#txt-acumulador-"+(i-2);
+                        var contenidoAcumulador1 = $(acumuladorAnterior).val();
+                        var contenidoAcumulador = parseInt(contenidoAcumulador1);
+                        var resultado = almacenar + contenidoAcumulador;
+                        var acumuladorSiguiente = "#txt-acumulador-"+i;
+                        $(acumuladorSiguiente).val(resultado);
+                    }
+                    if (subcadenaAnterior != '00') {
+                        var acumuladorAnterior = "#txt-acumulador-"+(i-1);
+                        var contenidoAcumulador1 = $(acumuladorAnterior).val();
+                        var contenidoAcumulador = parseInt(contenidoAcumulador1);
+                        var resultado = almacenar + contenidoAcumulador;
+                        var acumuladorSiguiente = "#txt-acumulador-"+i;
+                        $(acumuladorSiguiente).val(resultado);
+                    }
+
+                    //--------------------------------------------------------------
                     
-                 }
-                 if (i > 9 && i < 20) {
-                    var instruccionInicio = "0" + i;
-                    var bifurcacion = "#txt-bifurcacion-"+instruccionInicio;
-                 }
-                var instruccionFinal = parseInt(subcadena);
-                var instruccionInicial = parseInt(instruccionInicio);
-
-                //------------------------------------------------------------------
-                var acumuladorAnterior = "#txt-acumulador-"+(instruccionInicial-1);
-                var contenidoAcumulador1 = $(acumuladorAnterior).val();
-                var acumuladorSiguiente = "#txt-acumulador-"+instruccionFinal;
-                $(acumuladorSiguiente).val(contenidoAcumulador1);
-
-
-                 for (var n = instruccionInicial ; n < instruccionFinal - 1; n++) {
-                        var instruccionBorrar = "#txt-contenido-"+(n+1);
-                        if (i < 10) {
-                            var bifurcacion = "#txt-bifurcacion-00"+n;
-                        }if (i > 9 && i < 20) {
-                            var bifurcacion = "#txt-bifurcacion-0"+n;
-                        }
-                        var respaldoBifurcacion = $(instruccionBorrar).val();
-                        $(bifurcacion).val(respaldoBifurcacion);
-                        $(instruccionBorrar).val(" ");                     
-                 }
-                 respaldo(instruccionInicio,subcadena,i);
-                 var contenido = parseInt(subcadena);
-                 if ( i < 10) {
-                    var siguiente = "00"+(i+1);
-                 }
-                 if (i > 9 && i < 20) {
-                    var siguiente = "0"+(i+1);
-                 }
-                var pc = "#txt-pc-"+i;
-                $(pc).val(siguiente);
-                var ir = "#txt-ir-"+i;
-                $(ir).val(cadena);
-                ejecutarBifurcacionDepuracion(contenido);
-            break;
-            case '41':
-                //------------------------------------------------------------------
-                var acumuladorAnterior = "#txt-acumulador-"+(i-1);
-                var contenidoAcumulador1 = $(acumuladorAnterior).val();
-                var acumuladorSiguiente = "#txt-acumulador-"+i;
-                $(acumuladorSiguiente).val(contenidoAcumulador1);
-                //------------------------------------------------------------------
-                var contenidoAcumulador = parseInt(contenidoAcumulador1);
-                if(contenidoAcumulador < 0){
-                    if (i < 10 ) {
-                       var instruccionInicio = "00" + i;
-                    }
-                    if (i > 9 && i < 20) {
-                       var instruccionInicio = "0" + i;
-                       var bifurcacion = "#txt-bifurcacion-"+instruccionInicio;
-                    }
-                    var instruccionFinal = parseInt(subcadena);
-                    var instruccionInicial = parseInt(instruccionInicio);
-                    for (var n = instruccionInicial ; n < instruccionFinal - 1; n++) {
-                        var instruccionBorrar = "#txt-contenido-"+(n+1);
-                        if (i < 10) {
-                            var bifurcacion = "#txt-bifurcacion-00"+n;
-                        }if (i > 9 && i < 20) {
-                            var bifurcacion = "#txt-bifurcacion-0"+n;
-                        }
-                        var respaldoBifurcacion = $(instruccionBorrar).val();
-                        $(bifurcacion).val(respaldoBifurcacion);
-                        $(instruccionBorrar).val(" ");                     
-                    }
-                };
-                respaldo(instruccionInicio,subcadena,i);
-                 var contenido = parseInt(subcadena);
-                 if ( i < 10) {
-                    var siguiente = "00"+(i+1);
-                 }
-                 if (i > 9 && i < 20) {
-                    var siguiente = "0"+(i+1);
-                 }
-                var pc = "#txt-pc-"+i;
-                $(pc).val(siguiente);
-                var ir = "#txt-ir-"+i;
-                $(ir).val(cadena);
-                ejecutarBifurcacionDepuracion(contenido);
-            break;
-            case '42':
-                //-------------------------------------------------------
-                var acumuladorAnterior = "#txt-acumulador-"+(instruccionInicial-1);
-                var contenidoAcumulador1 = $(acumuladorAnterior).val();
-                var acumuladorSiguiente = "#txt-acumulador-"+intruccionfinal;
-                $(acumuladorSiguiente).val(contenidoAcumulador1);
-                //-------------------------------------------------------
-                var contenidoAcumulador = parseInt(contenidoAcumulador1);
-                if(contenidoAcumulador == 0){
-                    if (i < 10 ) {
-                       var instruccionInicio = "00" + i;
-                    }
-                    if (i > 9 && i < 20) {
-                       var instruccionInicio = "0" + i;
-                       var bifurcacion = "#txt-bifurcacion-"+instruccionInicio;
-                    }
-                    var instruccionFinal = parseInt(subcadena);
-                    var instruccionInicial = parseInt(instruccionInicio);
-                    for (var n = instruccionInicial ; n < instruccionFinal - 1; n++) {
-                        var instruccionBorrar = "#txt-contenido-"+(n+1);
-                        if (i < 10) {
-                            var bifurcacion = "#txt-bifurcacion-00"+n;
-                        }if (i > 9 && i < 20) {
-                            var bifurcacion = "#txt-bifurcacion-0"+n;
-                        }
-                        var respaldoBifurcacion = $(instruccionBorrar).val();
-                        $(bifurcacion).val(respaldoBifurcacion);
-                        $(instruccionBorrar).val(" ");                     
-                    }
-                };
-                  respaldo(instruccionInicio,subcadena,i);
-                 var contenido = parseInt(subcadena);
-                 if ( i < 10) {
-                    var siguiente = "00"+(i+1);
-                 }
-                 if (i > 9 && i < 20) {
-                    var siguiente = "0"+(i+1);
-                 }
-                var pc = "#txt-pc-"+i;
-                $(pc).val(siguiente);
-                var ir = "#txt-ir-"+i;
-                $(ir).val(cadena);
-                ejecutarBifurcacionDepuracion(contenido);
-            break;
-            case '43':
-                var acumuladorAnterior = "#txt-acumulador-"+(i-1);
-                var contenidoAcumulador1 = $(acumuladorAnterior).val();
-                var acumuladorSiguiente = "#txt-acumulador-"+i;
-                $(acumuladorSiguiente).val(contenidoAcumulador1);
+                }
                 if ( i < 10) {
                     var siguiente = "00"+(i+1);
-                 }
-                 if (i > 9 && i < 20) {
+                }
+                if (i > 9 && i < 20) {
                     var siguiente = "0"+(i+1);
-                 }
+                }
                 var pc = "#txt-pc-"+i;
                 $(pc).val(siguiente);
                 var ir = "#txt-ir-"+i;
                 $(ir).val(cadena);
-                return;
-
             break;
-
         }
     }
 });
+//##########################################################################
+$('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+        var paso = $(e.target).data('paso');
+        var porcentaje = (parseInt(paso) / 4) * 100;
+        $('.progress-bar').css({width: porcentaje + '%'});
+        $('.progress-bar').text("Paso " + paso + " de 4");
+})        
 
-//###########################################################################
-function ejecutarBifurcacionDepuracion(saltoInstruccion){
+
+});
+function ciclo(saltoInstruccion,instruccionInicial){
+    for (var i = saltoInstruccion; i < instruccionInicial; i++) {
+        
+    
         var salto = saltoInstruccion;
         var input = "#txt-contenido-"+salto;
         var cadena = $(input).val();
         if (cadena != "") {
-           var subcadena1 = cadena.substring(0,2);
+            var subcadena1 = cadena.substring(0,2);
            var subcadena = cadena.substring(2,5);
            switch(subcadena1){
              case '10':
@@ -837,178 +838,122 @@ function ejecutarBifurcacionDepuracion(saltoInstruccion){
                  var  mensaje = $(ubicacion).val();
              break;
              case '20':
-                var ubicacion = "#txt-ubicacion-"+subcadena;
-                var contenido = $(ubicacion).val();
-                var acumulador = "#txt-acumulador-"+i;
-                $(acumulador).val(contenido);
+                 var ubicacion = "#txt-ubicacion-"+subcadena;
+                 var contenido = $(ubicacion).val();
+                 if (contenido == "") {
+                    var iteracion = parseInt(subcadena);
+                    var instruccion = "#txt-contenido-"+iteracion;
+                    var contenidoInput = $(instruccion).val();
+                    var almacenar = parseInt(contenidoInput);
+                    $("#txt-acumulador-ejecucion").val(almacenar);
+                 }
+                 if (contenido != "") {
+                    $("#txt-acumulador-ejecucion").val(contenido);
+                 }
              break;
              case '21':
-                var acumuladorAnterior = "#txt-acumulador-"+(i-1);
-                var contenidoAcumulador1 = $(acumuladorAnterior).val();
-                var acumuladorSiguiente = "#txt-acumulador-"+i;
-                $(acumuladorSiguiente).val(contenidoAcumulador1);
-                //-----------------------------------------------
+                var acumulador = $('#txt-acumulador-ejecucion').val();
                 var ubicacion = "#txt-ubicacion-"+subcadena;
-                $(ubicacion).val(contenidoAcumulador1);
+                $(ubicacion).val(acumulador);
              break;
              case '30':
-                var ubicacion = "#txt-ubicacion-"+subcadena;
-                var contenido = $(ubicacion).val();
-                var contenido1 = parseInt(contenido);
-                //--------------------------------------------------------
-                var acumuladorAnterior = "#txt-acumulador-"+(i-1);
-                var contenidoAcumulador1 = $(acumuladorAnterior).val();
-                var contenidoAcumulador = parseInt(contenidoAcumulador1);
-                var resultado = contenido1 + contenidoAcumulador;
-                var acumuladorSiguiente = "#txt-acumulador-"+i;
+                 var ubicacion = "#txt-ubicacion-"+subcadena;
+                 var contenido = $(ubicacion).val();
+                 if (contenido == "") {
+                    var iteracion = parseInt(subcadena);
+                    var instruccion = "#txt-contenido-"+iteracion;
+                    var contenidoInput = $(instruccion).val();
+                    var almacenar = parseInt(contenidoInput);
+                    //--------------------------------------------------------------
+                    var acumulador = parseInt($('#txt-acumulador-ejecucion').val());
+                    var acumulador1 = parseInt(acumulador);
+                    var resultado = almacenar + acumulador1;
+                    $("#txt-acumulador-ejecucion").val(resultado);
+                 }
+                 if (contenido != "") {
+                    var contenido1 = parseInt(contenido);
+                    var acumulador = parseInt($('#txt-acumulador-ejecucion').val());
+                    var acumulador1 = parseInt(acumulador);
+                    var resultado = contenido1 + acumulador1;
+                    $("#txt-acumulador-ejecucion").val(resultado);
+                 }
              break;
              case '31':
-                var ubicacion = "#txt-ubicacion-"+subcadena;
-                var contenido = $(ubicacion).val();
-                var contenido1 = parseInt(contenido);
-                //--------------------------------------------------------
-                var acumuladorAnterior = "#txt-acumulador-"+(i-1);
-                var contenidoAcumulador1 = $(acumuladorAnterior).val();
-                var contenidoAcumulador = parseInt(contenidoAcumulador1);
-                var resultado = contenidoAcumulador - contenido1;
-                var acumuladorSiguiente = "#txt-acumulador-"+i;
-                $(acumuladorSiguiente).val(resultado);
+                 var ubicacion = "#txt-ubicacion-"+subcadena;
+                 var contenido = $(ubicacion).val();
+                 if (contenido == "") {
+                    var iteracion = parseInt(subcadena);
+                    var instruccion = "#txt-contenido-"+iteracion;
+                    var contenidoInput = $(instruccion).val();
+                    var almacenar = parseInt(contenidoInput);
+                    //--------------------------------------------------------------
+                    var acumulador = parseInt($('#txt-acumulador-ejecucion').val());
+                    var acumulador1 = parseInt(acumulador);
+                    var resultado = acumulador1 - almacenar;
+                    $("#txt-acumulador-ejecucion").val(resultado);
+                 }
+                 if (contenido != "") {
+                    var contenido1 = parseInt(contenido);
+                    var acumulador = parseInt($('#txt-acumulador-ejecucion').val());
+                    var acumulador1 = parseInt(acumulador);
+                    var resultado =   acumulador1 - contenido1;
+                    $("#txt-acumulador-ejecucion").val(resultado);
+                 }
+                 
+                $("#txt-ir-ejecucion").val(cadena);
              break;
              case '32':
-                var ubicacion = "#txt-ubicacion-"+subcadena;
-                var contenido = $(ubicacion).val();
-                var contenido1 = parseInt(contenido);
-                //--------------------------------------------------------
-                var acumuladorAnterior = "#txt-acumulador-"+(i-1);
-                var contenidoAcumulador1 = $(acumuladorAnterior).val();
-                var contenidoAcumulador = parseInt(contenidoAcumulador1);
-                var resultado = contenido1 / contenidoAcumulador ;
-                var acumuladorSiguiente = "#txt-acumulador-"+i;
+                 var ubicacion = "#txt-ubicacion-"+subcadena;
+                 var contenido = $(ubicacion).val();
+                 if (contenido == "") {
+                    var iteracion = parseInt(subcadena);
+                    var instruccion = "#txt-contenido-"+iteracion;
+                    var contenidoInput = $(instruccion).val();
+                    var almacenar = parseInt(contenidoInput);
+                    //--------------------------------------------------------------
+                    var acumulador = parseInt($('#txt-acumulador-ejecucion').val());
+                    var acumulador1 = parseInt(acumulador);
+                    var resultado = almacenar / acumulador1 ;
+                    $("#txt-acumulador-ejecucion").val(resultado);
+                 }
+                 if (contenido != "") {
+                    var contenido1 = parseInt(contenido);
+                    var acumulador = parseInt($('#txt-acumulador-ejecucion').val());
+                    var acumulador1 = parseInt(acumulador);
+                    var resultado =   contenido1 / acumulador1 ;
+                    $("#txt-acumulador-ejecucion").val(resultado);
+                 }
              break;
              case '33':
                  var ubicacion = "#txt-ubicacion-"+subcadena;
-                var contenido = $(ubicacion).val();
-                var contenido1 = parseInt(contenido);
-                //--------------------------------------------------------
-                var acumuladorAnterior = "#txt-acumulador-"+(i-1);
-                var contenidoAcumulador1 = $(acumuladorAnterior).val();
-                var contenidoAcumulador = parseInt(contenidoAcumulador1);
-                var resultado = contenido1 * contenidoAcumulador ;
-                var acumuladorSiguiente = "#txt-acumulador-"+i;
-                $(acumuladorSiguiente).val(resultado);
+                 var contenido = $(ubicacion).val();
+                 if (contenido == "") {
+                    var iteracion = parseInt(subcadena);
+                    var instruccion = "#txt-contenido-"+iteracion;
+                    var contenidoInput = $(instruccion).val();
+                    var almacenar = parseInt(contenidoInput);
+                    //--------------------------------------------------------------
+                    var acumulador = parseInt($('#txt-acumulador-ejecucion').val());
+                    var acumulador1 = parseInt(acumulador);
+                    var resultado = almacenar * acumulador1 ;
+                    $("#txt-acumulador-ejecucion").val(resultado);
+                 }
+                 if (contenido != "") {
+                    var contenido1 = parseInt(contenido);
+                    var acumulador = parseInt($('#txt-acumulador-ejecucion').val());
+                    var acumulador1 = parseInt(acumulador);
+                    var resultado =   contenido1 * acumulador1 ;
+                    $("#txt-acumulador-ejecucion").val(resultado);
+                 }
+             break;
+             case '40':
+                 var contenido = "#txt-contenido-"+subcadena;
+                 var instruccion = $(contenido).val();
+                 var subcadena1 = instruccion.substring(0,2);
+                 var subcadena = instruccion.substring(2,5);
              break;
            
         }
         }
-};
-
-
-//##########################################################################
-$('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
-        var paso = $(e.target).data('paso');
-        var porcentaje = (parseInt(paso) / 4) * 100;
-        $('.progress-bar').css({width: porcentaje + '%'});
-        $('.progress-bar').text("Paso " + paso + " de 4");
-})
-
-    $('#txt-fecha').click(function(){
-        $("#txt-fecha").datepicker();
-    })
-
-    $('#personal').click(function(){
-        var nombre = $("#txt-nombre").val();
-        var apellido = $("#txt-apellido").val();
-        var fecha = $("#txt-fecha").val();
-        if (nombre=="") {
-            $("#mensaje1").fadeIn("slow");
-                  return false;
         }
-        else{
-            $("#mensaje1").fadeOut();
-            if (apellido=="") {
-                $("#mensaje2").fadeIn("slow");
-                return false;
-            }
-            else{
-                $("#mensaje2").fadeOut();
-                if (fecha=="") {
-                    $("#mensaje3").fadeIn("slow");
-                    return false;
-                }
-                else{
-                    $("#mensaje3").fadeOut();
-                    $('.nav-pills a[href="#'+'paso2'+'"]').tab('show');
-                            
-                }
-            }
-        }       
-    })
-
-    $('#social').click(function(){
-        $('.nav-pills a[href="#'+'paso3'+'"]').tab('show');
-    })
-
-            $('#seguridad').click(function(){
-                var correo = $("#txt-correo").val();
-                var contraseña = $("#txt-contraseña").val();
-                var contraseña2 = $("#txt-contraseña2").val();
-                if (correo=="") {
-                    $("#mensaje4").fadeIn("slow");
-                    return false;
-                }
-                else{
-                    $("#mensaje4").fadeOut();
-                    var regex = /[\w-\.]{2,}@([\w-]{2,}\.)*([\w-]{2,}\.)[\w-]{2,4}/;
-                    if (regex.test($('#txt-correo').val().trim())) {
-                            $("#mensaje8").fadeOut();
-                    }
-                    else {
-                        
-                        $("#mensaje8").fadeIn("slow");
-                        return false;
-                    }
-                    if (contraseña=="") {
-                        $("#mensaje5").fadeIn("slow");
-                        return false;
-                    }
-                    else{
-                        $("#mensaje5").fadeOut();
-                        if (contraseña2=="") {
-                            $("#mensaje6").fadeIn("slow");
-                            return false;
-                        }
-                        else{
-                            $("#mensaje6").fadeOut();
-                            if (contraseña!=contraseña2) {
-                                $("#mensaje7").fadeIn("slow");
-                            }
-                            else{
-                                $("#mensaje7").fadeOut();
-                                $('.nav-pills a[href="#'+'paso4'+'"]').tab('show');
-                            }
-                        }
-                    }
-                }
-
-                
-            })
-
-            //Limpiar los campos del formulario
-            $('.first').click(function(){
-                 $('#miAsistente a:first').tab('show');
-                 $("#txt-nombre").val("");
-                 $("#txt-apellido").val("");
-                 $("#txt-fecha").val("");
-                 $("#txt-facebook").val("");
-                 $("#txt-twitter").val("");
-                 $("#txt-youtube").val("");
-                 $("#txt-pagina-web").val("");
-                 $("#txt-correo").val("");
-                 $("#txt-contraseña").val("");
-                 $("#txt-contraseña2").val("");
-
-            })
-
-
-
-});
+};
