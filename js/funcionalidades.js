@@ -370,8 +370,7 @@ function ejecutar(){
                  respaldo(instruccionInicio,subcadena,i);
                  var contenido = parseInt(subcadena);
                  ejecutarBifurcacion(contenido);
-                 }                
-                 
+                 }      
                 }
              break;
              //-----------------------------------------------------------------------------
@@ -624,7 +623,7 @@ $('#btn-compilar').click(function(){
 
 function compilar(){
     var arrayInstrucciones = ["10:Leer un numero      ","11:Escribir en pantalla","20:Cargar en AC         ","21:Almacenar memoria     ","30:Sumar AC               ","31:Restar AC                ","32:Dividir AC               ","33:Multiplicar AC                ","40:Bifurca               ","41:Bifurca negativo               ","42:Bifurca cero               ","43:Fin ejecucion                 "];
-    var regex = /^(10|11|20|21|30|31|32|33|40|41|42|43|00)[0-9]{3}$/;
+    var regex = /^(10|11|20|21|30|31|32|33|40|41|42|43|00|01|02|03|04|05|06|07|08|09)[0-9]{3}$/;
     var comprobacion = 0;
     for (var i = 0; i < 20; i++) {
         var input = "#txt-contenido-"+i+"";
@@ -772,7 +771,7 @@ $('#btn-depurar').click(function(){
                     var anterior = "#txt-contenido-"+(i-1);
                     var contenedor = $(anterior).val()
                     var subcadenaAnterior = contenedor.substring(0,2);
-                    if (subcadenaAnterior == '00') {
+                    if ((subcadenaAnterior == '00') || (subcadenaAnterior == '01') || (subcadenaAnterior == '02') || (subcadenaAnterior == '03') || (subcadenaAnterior == '04') || (subcadenaAnterior == '05') || (subcadenaAnterior == '06') || (subcadenaAnterior == '07') || (subcadenaAnterior == '08') || (subcadenaAnterior == '09')) {
                         var acumuladorAnterior = "#txt-acumulador-"+(i-2);
                         var contenidoAcumulador1 = $(acumuladorAnterior).val();
                         var contenidoAcumulador = parseInt(contenidoAcumulador1);
@@ -780,7 +779,7 @@ $('#btn-depurar').click(function(){
                         var acumuladorSiguiente = "#txt-acumulador-"+i;
                         $(acumuladorSiguiente).val(resultado);
                     }
-                    if (subcadenaAnterior != '00') {
+                    if ((subcadenaAnterior != '00') || (subcadenaAnterior != '01') || (subcadenaAnterior != '02') || (subcadenaAnterior != '03') || (subcadenaAnterior != '04') || (subcadenaAnterior != '05') || (subcadenaAnterior != '06') || (subcadenaAnterior != '07') || (subcadenaAnterior != '08') || (subcadenaAnterior != '09')) {
                         var acumuladorAnterior = "#txt-acumulador-"+(i-1);
                         var contenidoAcumulador1 = $(acumuladorAnterior).val();
                         var contenidoAcumulador = parseInt(contenidoAcumulador1);
@@ -788,23 +787,288 @@ $('#btn-depurar').click(function(){
                         var acumuladorSiguiente = "#txt-acumulador-"+i;
                         $(acumuladorSiguiente).val(resultado);
                     }
-
-                    //--------------------------------------------------------------
                     
                 }
-                if ( i < 10) {
-                    var siguiente = "00"+(i+1);
-                }
-                if (i > 9 && i < 20) {
-                    var siguiente = "0"+(i+1);
-                }
-                var pc = "#txt-pc-"+i;
-                $(pc).val(siguiente);
-                var ir = "#txt-ir-"+i;
-                $(ir).val(cadena);
+                    var ir = "#txt-ir-"+i;
+                    $(ir).val(cadena);
+                    //---------------------
+                    if ( i < 10) {
+                        var siguiente = "00"+(i+1);
+                    }
+                    if (i > 9 && i < 20) {
+                        var siguiente = "0"+(i+1);
+                    }
+                    var pc = "#txt-pc-"+i;
+                    $(pc).val(siguiente);
             break;
-        }
+            case '31':
+                var ubicacion = "#txt-ubicacion-"+subcadena;
+                var contenido = $(ubicacion).val();
+                var contenido1 = parseInt(contenido);
+                if (contenido != "") {
+                    var acumuladorAnterior = "#txt-acumulador-"+(i-1);
+                    var contenidoAcumulador1 = $(acumuladorAnterior).val();
+                    var contenidoAcumulador = parseInt(contenidoAcumulador1);
+                    var resultado = contenidoAcumulador - contenido1 ;
+                    var acumuladorSiguiente = "#txt-acumulador-"+i;
+                    $(acumuladorSiguiente).val(resultado);
+                }
+                if (contenido == "") {
+                    var iteracion = parseInt(subcadena);
+                    var instruccion = "#txt-contenido-"+iteracion;
+                    var contenidoInput = $(instruccion).val();
+                    var almacenar = parseInt(contenidoInput);
+                    //--------------------------------------------------------------
+                    var anterior = "#txt-contenido-"+(i-1);
+                    var contenedor = $(anterior).val()
+                    var subcadenaAnterior = contenedor.substring(0,2);
+                    if ((subcadenaAnterior == '00') || (subcadenaAnterior == '01') || (subcadenaAnterior == '02') || (subcadenaAnterior == '03') || (subcadenaAnterior == '04') || (subcadenaAnterior == '05') || (subcadenaAnterior == '06') || (subcadenaAnterior == '07') || (subcadenaAnterior == '08') || (subcadenaAnterior == '09')) {
+                        var acumuladorAnterior = "#txt-acumulador-"+(i-2);
+                        var contenidoAcumulador1 = $(acumuladorAnterior).val();
+                        var contenidoAcumulador = parseInt(contenidoAcumulador1);
+                        var resultado = contenidoAcumulador - almacenar;
+                        var acumuladorSiguiente = "#txt-acumulador-"+i;
+                        $(acumuladorSiguiente).val(resultado);
+                    }
+                    if ((subcadenaAnterior != '00') || (subcadenaAnterior != '01') || (subcadenaAnterior != '02') || (subcadenaAnterior != '03') || (subcadenaAnterior != '04') || (subcadenaAnterior != '05') || (subcadenaAnterior != '06') || (subcadenaAnterior != '07') || (subcadenaAnterior != '08') || (subcadenaAnterior != '09')) {
+                        var acumuladorAnterior = "#txt-acumulador-"+(i-1);
+                        var contenidoAcumulador1 = $(acumuladorAnterior).val();
+                        var contenidoAcumulador = parseInt(contenidoAcumulador1);
+                        var resultado = contenidoAcumulador - almacenar ;
+                        var acumuladorSiguiente = "#txt-acumulador-"+i;
+                        $(acumuladorSiguiente).val(resultado);
+                    }
+                }
+                var ir = "#txt-ir-"+i;
+                    $(ir).val(cadena);
+                    //---------------------
+                    if ( i < 10) {
+                        var siguiente = "00"+(i+1);
+                    }
+                    if (i > 9 && i < 20) {
+                        var siguiente = "0"+(i+1);
+                    }
+                    var pc = "#txt-pc-"+i;
+                    $(pc).val(siguiente);
+            break;
+        case '32':
+                var ubicacion = "#txt-ubicacion-"+subcadena;
+                var contenido = $(ubicacion).val();
+                var contenido1 = parseInt(contenido);
+                if (contenido != "") {
+                    var acumuladorAnterior = "#txt-acumulador-"+(i-1);
+                    var contenidoAcumulador1 = $(acumuladorAnterior).val();
+                    var contenidoAcumulador = parseInt(contenidoAcumulador1);
+                    var resultado = contenido1 / contenidoAcumulador;
+                    var acumuladorSiguiente = "#txt-acumulador-"+i;
+                    $(acumuladorSiguiente).val(resultado);
+                }
+                if (contenido == "") {
+                    var iteracion = parseInt(subcadena);
+                    var instruccion = "#txt-contenido-"+iteracion;
+                    var contenidoInput = $(instruccion).val();
+                    var almacenar = parseInt(contenidoInput);
+                    //--------------------------------------------------------------
+                    var anterior = "#txt-contenido-"+(i-1);
+                    var contenedor = $(anterior).val()
+                    var subcadenaAnterior = contenedor.substring(0,2);
+                    if ((subcadenaAnterior == '00') || (subcadenaAnterior == '01') || (subcadenaAnterior == '02') || (subcadenaAnterior == '03') || (subcadenaAnterior == '04') || (subcadenaAnterior == '05') || (subcadenaAnterior == '06') || (subcadenaAnterior == '07') || (subcadenaAnterior == '08') || (subcadenaAnterior == '09')) {
+                        var acumuladorAnterior = "#txt-acumulador-"+(i-2);
+                        var contenidoAcumulador1 = $(acumuladorAnterior).val();
+                        var contenidoAcumulador = parseInt(contenidoAcumulador1);
+                        var resultado = almacenar / contenidoAcumulador;
+                        var acumuladorSiguiente = "#txt-acumulador-"+i;
+                        $(acumuladorSiguiente).val(resultado);
+                    }
+                    if ((subcadenaAnterior != '00') || (subcadenaAnterior != '01') || (subcadenaAnterior != '02') || (subcadenaAnterior != '03') || (subcadenaAnterior != '04') || (subcadenaAnterior != '05') || (subcadenaAnterior != '06') || (subcadenaAnterior != '07') || (subcadenaAnterior != '08') || (subcadenaAnterior != '09')) {
+                        var acumuladorAnterior = "#txt-acumulador-"+(i-1);
+                        var contenidoAcumulador1 = $(acumuladorAnterior).val();
+                        var contenidoAcumulador = parseInt(contenidoAcumulador1);
+                        var resultado = almacenar / contenidoAcumulador;
+                        var acumuladorSiguiente = "#txt-acumulador-"+i;
+                        $(acumuladorSiguiente).val(resultado);
+                    }
+                    
+                }
+                var ir = "#txt-ir-"+i;
+                    $(ir).val(cadena);
+                    //---------------------
+                    if ( i < 10) {
+                        var siguiente = "00"+(i+1);
+                    }
+                    if (i > 9 && i < 20) {
+                        var siguiente = "0"+(i+1);
+                    }
+                    var pc = "#txt-pc-"+i;
+                    $(pc).val(siguiente);
+
+
+                    //--------------------------------------------------------------
+            break;
+            case '33':
+                var ubicacion = "#txt-ubicacion-"+subcadena;
+                var contenido = $(ubicacion).val();
+                var contenido1 = parseInt(contenido);
+                if (contenido != "") {
+                    var acumuladorAnterior = "#txt-acumulador-"+(i-1);
+                    var contenidoAcumulador1 = $(acumuladorAnterior).val();
+                    var contenidoAcumulador = parseInt(contenidoAcumulador1);
+                    var resultado = contenido1 * contenidoAcumulador;
+                    var acumuladorSiguiente = "#txt-acumulador-"+i;
+                    $(acumuladorSiguiente).val(resultado);
+                }
+                if (contenido == "") {
+                    var iteracion = parseInt(subcadena);
+                    var instruccion = "#txt-contenido-"+iteracion;
+                    var contenidoInput = $(instruccion).val();
+                    var almacenar = parseInt(contenidoInput);
+                    //--------------------------------------------------------------
+                    var anterior = "#txt-contenido-"+(i-1);
+                    var contenedor = $(anterior).val()
+                    var subcadenaAnterior = contenedor.substring(0,2);
+                    if ((subcadenaAnterior == '00') || (subcadenaAnterior == '01') || (subcadenaAnterior == '02') || (subcadenaAnterior == '03') || (subcadenaAnterior == '04') || (subcadenaAnterior == '05') || (subcadenaAnterior == '06') || (subcadenaAnterior == '07') || (subcadenaAnterior == '08') || (subcadenaAnterior == '09')) {
+                        var acumuladorAnterior = "#txt-acumulador-"+(i-2);
+                        var contenidoAcumulador1 = $(acumuladorAnterior).val();
+                        var contenidoAcumulador = parseInt(contenidoAcumulador1);
+                        var resultado = almacenar * contenidoAcumulador;
+                        var acumuladorSiguiente = "#txt-acumulador-"+i;
+                        $(acumuladorSiguiente).val(resultado);
+                    }
+                    if ((subcadenaAnterior != '00') || (subcadenaAnterior != '01') || (subcadenaAnterior != '02') || (subcadenaAnterior != '03') || (subcadenaAnterior != '04') || (subcadenaAnterior != '05') || (subcadenaAnterior != '06') || (subcadenaAnterior != '07') || (subcadenaAnterior != '08') || (subcadenaAnterior != '09')) {
+                        var acumuladorAnterior = "#txt-acumulador-"+(i-1);
+                        var contenidoAcumulador1 = $(acumuladorAnterior).val();
+                        var contenidoAcumulador = parseInt(contenidoAcumulador1);
+                        var resultado = almacenar * contenidoAcumulador;
+                        var acumuladorSiguiente = "#txt-acumulador-"+i;
+                        $(acumuladorSiguiente).val(resultado);
+                    }
+                    
+                }
+                    var ir = "#txt-ir-"+i;
+                    $(ir).val(cadena);
+                    //---------------------
+                    if ( i < 10) {
+                        var siguiente = "00"+(i+1);
+                    }
+                    if (i > 9 && i < 20) {
+                        var siguiente = "0"+(i+1);
+                    }
+                    var pc = "#txt-pc-"+i;
+                    $(pc).val(siguiente);
+                    break;
+
+                    case '40':
+                        $(instruccion).val(subcadena1);
+                        $(direccion).val(subcadena);
+                        var ir = "#txt-ir-"+i;
+                        $(ir).val(cadena);
+                        //----------------------------------
+                        var acumulador = "#txt-acumulador-"+(i-1);
+                        var contenidoAcumulador = $(acumulador).val();
+                        var acumuladorActual = "#txt-acumulador-"+i;
+                        $(acumuladorActual).val(contenidoAcumulador);
+
+                        //---------------------
+                        if ( i < 10) {
+                            var siguiente = "00"+(i+1);
+                        }
+                        if (i > 9 && i < 20) {
+                            var siguiente = "0"+(i+1);
+                        }
+                        var pc = "#txt-pc-"+i;
+                        $(pc).val(siguiente);
+                    break;
+
+                    case '41':
+                        $(instruccion).val(subcadena1);
+                        $(direccion).val(subcadena);
+                        var ir = "#txt-ir-"+i;
+                        $(ir).val(cadena);
+                        //----------------------------------
+                        var acumulador = "#txt-acumulador-"+(i-1);
+                        var contenidoAcumulador = $(acumulador).val();
+                        var acumuladorActual = "#txt-acumulador-"+i;
+                        $(acumuladorActual).val(contenidoAcumulador);
+
+                        //---------------------
+                        if ( i < 10) {
+                            var siguiente = "00"+(i+1);
+                        }
+                        if (i > 9 && i < 20) {
+                            var siguiente = "0"+(i+1);
+                        }
+                        var pc = "#txt-pc-"+i;
+                        $(pc).val(siguiente);
+                    break;
+
+                    case '42':
+                        $(instruccion).val(subcadena1);
+                        $(direccion).val(subcadena);
+                        var ir = "#txt-ir-"+i;
+                        $(ir).val(cadena);
+                        //----------------------------------
+                        var acumulador = "#txt-acumulador-"+(i-1);
+                        var contenidoAcumulador = $(acumulador).val();
+                        var acumuladorActual = "#txt-acumulador-"+i;
+                        $(acumuladorActual).val(contenidoAcumulador);
+
+                        //---------------------
+                        if ( i < 10) {
+                            var siguiente = "00"+(i+1);
+                        }
+                        if (i > 9 && i < 20) {
+                            var siguiente = "0"+(i+1);
+                        }
+                        var pc = "#txt-pc-"+i;
+                        $(pc).val(siguiente);
+                    break;
+
+                    case '43':
+                        $(instruccion).val(subcadena1);
+                        $(direccion).val(subcadena);
+                        var ir = "#txt-ir-"+i;
+                        $(ir).val(cadena);
+                        //----------------------------------
+                        var acumulador = "#txt-acumulador-"+(i-1);
+                        var contenidoAcumulador = $(acumulador).val();
+                        var acumuladorActual = "#txt-acumulador-"+i;
+                        $(acumuladorActual).val(contenidoAcumulador);
+
+                        //---------------------
+                        if ( i < 10) {
+                            var siguiente = "00"+(i+1);
+                        }
+                        if (i > 9 && i < 20) {
+                            var siguiente = "0"+(i+1);
+                        }
+                        var pc = "#txt-pc-"+i;
+                        $(pc).val(siguiente);
+                    break;
+                }
     }
+        if ((subcadena1 == '00') || (subcadena1 == '01') || (subcadena1 == '02') || (subcadena1 == '03') || (subcadena1 == '04') || (subcadena1 == '05') || (subcadena1 == '06') || (subcadena1 == '07') || (subcadena1 == '08') || (subcadena1 == '09')) {
+            $(instruccion).val(subcadena1);
+            $(direccion).val(subcadena);
+            var ir = "#txt-ir-"+i;
+            $(ir).val(cadena);
+            //----------------------------------
+            var acumulador = "#txt-acumulador-"+(i-1);
+            var contenidoAcumulador = $(acumulador).val();
+            var acumuladorActual = "#txt-acumulador-"+i;
+            $(acumuladorActual).val(contenidoAcumulador);
+
+
+            //---------------------
+            if ( i < 10) {
+                var siguiente = "00"+(i+1);
+            }
+            if (i > 9 && i < 20) {
+                var siguiente = "0"+(i+1);
+            }
+            var pc = "#txt-pc-"+i;
+            $(pc).val(siguiente);
+        } 
+    
 });
 //##########################################################################
 $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
@@ -817,10 +1081,10 @@ $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
 
 });
 function ciclo(saltoInstruccion,instruccionInicial){
-    for (var i = saltoInstruccion; i < instruccionInicial; i++) {
+    //for (var i = saltoInstruccion; i < instruccionInicial; i++) {
         
     
-        var salto = saltoInstruccion;
+        var salto = instruccionInicial;
         var input = "#txt-contenido-"+salto;
         var cadena = $(input).val();
         if (cadena != "") {
@@ -955,7 +1219,7 @@ function ciclo(saltoInstruccion,instruccionInicial){
            
         }
         }
-        }
+        //}
 };
 
 
@@ -1050,96 +1314,3 @@ $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
 
                 
             })
-function ejecutarBifurcacionDepuracion(saltoInstruccion,i){
-        var salto = saltoInstruccion;
-        var input = "#txt-contenido-"+salto;
-        var cadena = $(input).val();
-        if (cadena != "") {
-           var subcadena1 = cadena.substring(0,2);
-           var subcadena = cadena.substring(2,5);
-           switch(subcadena1){
-             case '10':
-                var subcadena = cadena.substring(2,5);
-                var numero = prompt('Ingrese el numero que ingresara en la posicion '+ subcadena+': ','');
-                var ubicacion = '#txt-ubicacion-'+subcadena;
-                $(ubicacion).val(numero);
-             break;
-             case '11':
-                 var ubicacion = "#txt-ubicacion-"+subcadena;
-                 var  mensaje = $(ubicacion).val();
-                 //--------------------------------------------
-                 var acumulador = "#txt-acumulador-"+(i-1);
-                 var valorAcumulador = $(acumulador).val();
-                 var almacenar = toString(valorAcumulador);
-                 alert(valorAcumulador);
-                 var valor = "#txt-acumulador-"+(salto);
-                 var prueba = $(valor).val();
-                 alert(prueba);
-                 $(valor).val(almacenar);
-                 //--------------------------------------------
-             break;
-             case '20':
-                var ubicacion = "#txt-ubicacion-"+subcadena;
-                var contenido = $(ubicacion).val();
-                var acumulador = "#txt-acumulador-"+i;
-                $(acumulador).val(contenido);
-             break;
-             case '21':
-                var acumuladorAnterior = "#txt-acumulador-"+(i-1);
-                var contenidoAcumulador1 = $(acumuladorAnterior).val();
-                var acumuladorSiguiente = "#txt-acumulador-"+i;
-                $(acumuladorSiguiente).val(contenidoAcumulador1);
-                //-----------------------------------------------
-                var ubicacion = "#txt-ubicacion-"+subcadena;
-                $(ubicacion).val(contenidoAcumulador1);
-             break;
-             case '30':
-                var ubicacion = "#txt-ubicacion-"+subcadena;
-                var contenido = $(ubicacion).val();
-                var contenido1 = parseInt(contenido);
-                //--------------------------------------------------------
-                var acumuladorAnterior = "#txt-acumulador-"+(i-1);
-                var contenidoAcumulador1 = $(acumuladorAnterior).val();
-                var contenidoAcumulador = parseInt(contenidoAcumulador1);
-                var resultado = contenido1 + contenidoAcumulador;
-                var acumuladorSiguiente = "#txt-acumulador-"+i;
-             break;
-             case '31':
-                var ubicacion = "#txt-ubicacion-"+subcadena;
-                var contenido = $(ubicacion).val();
-                var contenido1 = parseInt(contenido);
-                //--------------------------------------------------------
-                var acumuladorAnterior = "#txt-acumulador-"+(i-1);
-                var contenidoAcumulador1 = $(acumuladorAnterior).val();
-                var contenidoAcumulador = parseInt(contenidoAcumulador1);
-                var resultado = contenidoAcumulador - contenido1;
-                var acumuladorSiguiente = "#txt-acumulador-"+i;
-                $(acumuladorSiguiente).val(resultado);
-             break;
-             case '32':
-                var ubicacion = "#txt-ubicacion-"+subcadena;
-                var contenido = $(ubicacion).val();
-                var contenido1 = parseInt(contenido);
-                //--------------------------------------------------------
-                var acumuladorAnterior = "#txt-acumulador-"+(i-1);
-                var contenidoAcumulador1 = $(acumuladorAnterior).val();
-                var contenidoAcumulador = parseInt(contenidoAcumulador1);
-                var resultado = contenido1 / contenidoAcumulador ;
-                var acumuladorSiguiente = "#txt-acumulador-"+i;
-             break;
-             case '33':
-                 var ubicacion = "#txt-ubicacion-"+subcadena;
-                var contenido = $(ubicacion).val();
-                var contenido1 = parseInt(contenido);
-                //--------------------------------------------------------
-                var acumuladorAnterior = "#txt-acumulador-"+(i-1);
-                var contenidoAcumulador1 = $(acumuladorAnterior).val();
-                var contenidoAcumulador = parseInt(contenidoAcumulador1);
-                var resultado = contenido1 * contenidoAcumulador ;
-                var acumuladorSiguiente = "#txt-acumulador-"+i;
-                $(acumuladorSiguiente).val(resultado);
-             break;
-           
-        }
-        }
-};
