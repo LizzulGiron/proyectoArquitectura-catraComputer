@@ -957,3 +957,189 @@ function ciclo(saltoInstruccion,instruccionInicial){
         }
         }
 };
+
+
+
+//#######################################################################################################################
+
+$('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+        var paso = $(e.target).data('paso');
+        var porcentaje = (parseInt(paso) / 4) * 100;
+        $('.progress-bar').css({width: porcentaje + '%'});
+        $('.progress-bar').text("Paso " + paso + " de 4");
+})
+
+    $('#txt-fecha').click(function(){
+        $("#txt-fecha").datepicker();
+    })
+
+    $('#personal').click(function(){
+        var nombre = $("#txt-nombre").val();
+        var apellido = $("#txt-apellido").val();
+        var fecha = $("#txt-fecha").val();
+        if (nombre=="") {
+            $("#mensaje1").fadeIn("slow");
+                  return false;
+        }
+        else{
+            $("#mensaje1").fadeOut();
+            if (apellido=="") {
+                $("#mensaje2").fadeIn("slow");
+                return false;
+            }
+            else{
+                $("#mensaje2").fadeOut();
+                if (fecha=="") {
+                    $("#mensaje3").fadeIn("slow");
+                    return false;
+                }
+                else{
+                    $("#mensaje3").fadeOut();
+                    $('.nav-pills a[href="#'+'paso2'+'"]').tab('show');
+                            
+                }
+            }
+        }       
+    })
+
+    $('#social').click(function(){
+        $('.nav-pills a[href="#'+'paso3'+'"]').tab('show');
+    })
+
+            $('#seguridad').click(function(){
+                var correo = $("#txt-correo").val();
+                var contraseña = $("#txt-contraseña").val();
+                var contraseña2 = $("#txt-contraseña2").val();
+                if (correo=="") {
+                    $("#mensaje4").fadeIn("slow");
+                    return false;
+                }
+                else{
+                    $("#mensaje4").fadeOut();
+                    var regex = /[\w-\.]{2,}@([\w-]{2,}\.)*([\w-]{2,}\.)[\w-]{2,4}/;
+                    if (regex.test($('#txt-correo').val().trim())) {
+                            $("#mensaje8").fadeOut();
+                    }
+                    else {
+                        
+                        $("#mensaje8").fadeIn("slow");
+                        return false;
+                    }
+                    if (contraseña=="") {
+                        $("#mensaje5").fadeIn("slow");
+                        return false;
+                    }
+                    else{
+                        $("#mensaje5").fadeOut();
+                        if (contraseña2=="") {
+                            $("#mensaje6").fadeIn("slow");
+                            return false;
+                        }
+                        else{
+                            $("#mensaje6").fadeOut();
+                            if (contraseña!=contraseña2) {
+                                $("#mensaje7").fadeIn("slow");
+                            }
+                            else{
+                                $("#mensaje7").fadeOut();
+                                $('.nav-pills a[href="#'+'paso4'+'"]').tab('show');
+                            }
+                        }
+                    }
+                }
+
+                
+            })
+function ejecutarBifurcacionDepuracion(saltoInstruccion,i){
+        var salto = saltoInstruccion;
+        var input = "#txt-contenido-"+salto;
+        var cadena = $(input).val();
+        if (cadena != "") {
+           var subcadena1 = cadena.substring(0,2);
+           var subcadena = cadena.substring(2,5);
+           switch(subcadena1){
+             case '10':
+                var subcadena = cadena.substring(2,5);
+                var numero = prompt('Ingrese el numero que ingresara en la posicion '+ subcadena+': ','');
+                var ubicacion = '#txt-ubicacion-'+subcadena;
+                $(ubicacion).val(numero);
+             break;
+             case '11':
+                 var ubicacion = "#txt-ubicacion-"+subcadena;
+                 var  mensaje = $(ubicacion).val();
+                 //--------------------------------------------
+                 var acumulador = "#txt-acumulador-"+(i-1);
+                 var valorAcumulador = $(acumulador).val();
+                 var almacenar = toString(valorAcumulador);
+                 alert(valorAcumulador);
+                 var valor = "#txt-acumulador-"+(salto);
+                 var prueba = $(valor).val();
+                 alert(prueba);
+                 $(valor).val(almacenar);
+                 //--------------------------------------------
+             break;
+             case '20':
+                var ubicacion = "#txt-ubicacion-"+subcadena;
+                var contenido = $(ubicacion).val();
+                var acumulador = "#txt-acumulador-"+i;
+                $(acumulador).val(contenido);
+             break;
+             case '21':
+                var acumuladorAnterior = "#txt-acumulador-"+(i-1);
+                var contenidoAcumulador1 = $(acumuladorAnterior).val();
+                var acumuladorSiguiente = "#txt-acumulador-"+i;
+                $(acumuladorSiguiente).val(contenidoAcumulador1);
+                //-----------------------------------------------
+                var ubicacion = "#txt-ubicacion-"+subcadena;
+                $(ubicacion).val(contenidoAcumulador1);
+             break;
+             case '30':
+                var ubicacion = "#txt-ubicacion-"+subcadena;
+                var contenido = $(ubicacion).val();
+                var contenido1 = parseInt(contenido);
+                //--------------------------------------------------------
+                var acumuladorAnterior = "#txt-acumulador-"+(i-1);
+                var contenidoAcumulador1 = $(acumuladorAnterior).val();
+                var contenidoAcumulador = parseInt(contenidoAcumulador1);
+                var resultado = contenido1 + contenidoAcumulador;
+                var acumuladorSiguiente = "#txt-acumulador-"+i;
+             break;
+             case '31':
+                var ubicacion = "#txt-ubicacion-"+subcadena;
+                var contenido = $(ubicacion).val();
+                var contenido1 = parseInt(contenido);
+                //--------------------------------------------------------
+                var acumuladorAnterior = "#txt-acumulador-"+(i-1);
+                var contenidoAcumulador1 = $(acumuladorAnterior).val();
+                var contenidoAcumulador = parseInt(contenidoAcumulador1);
+                var resultado = contenidoAcumulador - contenido1;
+                var acumuladorSiguiente = "#txt-acumulador-"+i;
+                $(acumuladorSiguiente).val(resultado);
+             break;
+             case '32':
+                var ubicacion = "#txt-ubicacion-"+subcadena;
+                var contenido = $(ubicacion).val();
+                var contenido1 = parseInt(contenido);
+                //--------------------------------------------------------
+                var acumuladorAnterior = "#txt-acumulador-"+(i-1);
+                var contenidoAcumulador1 = $(acumuladorAnterior).val();
+                var contenidoAcumulador = parseInt(contenidoAcumulador1);
+                var resultado = contenido1 / contenidoAcumulador ;
+                var acumuladorSiguiente = "#txt-acumulador-"+i;
+             break;
+             case '33':
+                 var ubicacion = "#txt-ubicacion-"+subcadena;
+                var contenido = $(ubicacion).val();
+                var contenido1 = parseInt(contenido);
+                //--------------------------------------------------------
+                var acumuladorAnterior = "#txt-acumulador-"+(i-1);
+                var contenidoAcumulador1 = $(acumuladorAnterior).val();
+                var contenidoAcumulador = parseInt(contenidoAcumulador1);
+                var resultado = contenido1 * contenidoAcumulador ;
+                var acumuladorSiguiente = "#txt-acumulador-"+i;
+                $(acumuladorSiguiente).val(resultado);
+             break;
+           
+        }
+        }
+};
